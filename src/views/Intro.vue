@@ -4,7 +4,12 @@
     </div>
     <div class="content-right">
       <div class="pl-5">
-        <IntroTimeCounter />
+        <IntroTimeCounter
+          v-bind="{
+            isUserPerformAnyAction
+          }"
+          @timesUp="showEnterSiteModal()"
+        />
         <div class="intro-head-text">
           <strong>
             {{ introHeadText }}
@@ -41,12 +46,17 @@ export default {
     return {
       introHeadText: 'ปลุกหญิงสาวผู้นี้\nภายใน ๖๐ วินาที',
       introBodyText: 'หลายๆ คนบอกว่าความสุข\nของผู้หญิงคือการตื่นเช้ามา\nทำอาหารอร่อยๆ ให้คนรัก',
-      introFooterText: 'จริงฤา??'
+      introFooterText: 'จริงฤา??',
+      isUserPerformAnyAction: false
     }
   },
   methods: {
     changeImageType(actionType) {
+      this.isUserPerformAnyAction = true
       console.log(actionType) // change left side image
+    },
+    showEnterSiteModal() {
+      alert('show modal')
     }
   }
 }

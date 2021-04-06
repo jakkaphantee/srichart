@@ -9,6 +9,12 @@
 
 <script>
 export default {
+  props: {
+    isUserPerformAnyAction: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       timer: null,
@@ -16,7 +22,7 @@ export default {
     }
   },
   mounted() {
-    // this.timer = setInterval(this.timerCallback, 1000)
+    this.timer = setInterval(this.timerCallback, 1000)
   },
   computed: {
     thaiNumberConverted() {
@@ -44,9 +50,15 @@ export default {
   methods: {
     timerCallback() {
       this.counter -= 1
-      if (this.counter === 0) {
-        clearInterval(this.timer)
+      if (this.counter <= 30 && this.isUserPerformAnyAction) {
+        this.stopTimeInterval()
+      } else if (this.counter === 0) {
+        this.stopTimeInterval()
       }
+    },
+    stopTimeInterval() {
+      clearInterval(this.timer)
+      this.$emit('timesUp')
     }
   },
   beforeDestroy() {
