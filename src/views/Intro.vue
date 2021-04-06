@@ -23,7 +23,7 @@
         ข้าม
       </button>
     </div>
-    <ActionButton />
+    <ActionButton @changeImageType="changeImageType" />
   </div>
 </template>
 
@@ -42,6 +42,11 @@ export default {
       introHeadText: 'ปลุกหญิงสาวผู้นี้\nภายใน ๖๐ วินาที',
       introBodyText: 'หลายๆ คนบอกว่าความสุข\nของผู้หญิงคือการตื่นเช้ามา\nทำอาหารอร่อยๆ ให้คนรัก',
       introFooterText: 'จริงฤา??'
+    }
+  },
+  methods: {
+    changeImageType(actionType) {
+      console.log(actionType) // change left side image
     }
   }
 }
