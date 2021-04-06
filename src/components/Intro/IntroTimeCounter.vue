@@ -1,10 +1,8 @@
 <template>
-  <div align="left">
-    <div class="timer-container mt-5 pt-3" align="center">
-      <img width="210px" height="210px" src="../../assets/images/intro/timer_icon.svg" />
-      <div class="timer-text">
-        {{ thaiNumberConverted }}
-      </div>
+  <div class="timer-container mt-5 pt-5" align="left">
+    <img class="timer-icon" src="../../assets/images/intro/timer_icon.svg" />
+    <div class="timer-text">
+      {{ thaiNumberConverted }}
     </div>
   </div>
 </template>
@@ -62,12 +60,17 @@ export default {
   position: relative;
   width: fit-content;
   height: fit-content;
+
+  .timer-icon {
+    width: 210px;
+    height: 210px;
+  }
   
   .timer-text {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -42%);
+    transform: translate(-50%, -25%);
     font-family: '9_our_king';
     font-size: 72px;
     color: white;
