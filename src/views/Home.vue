@@ -55,14 +55,13 @@ export default {
   position: relative;
   right: 0;
   bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  max-width: 1920px;
-  max-height: 1080px;
+  width: 100%;
+  height: 100%;
   z-index: 0;
 }
 .home-brand-logo {
   position: absolute;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 7%;
