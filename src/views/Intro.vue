@@ -114,18 +114,12 @@ $themed-red: #8D0000;
   }
 }
 
-.text-button {
+.skip-button {
+  position: absolute;
   color: white;
-  background-color: transparent;
-  border: none;
-  font-size: 24px;
-
-  &.skip-button {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin-right: 3%;
-    margin-bottom: 3%;
-  }
+  bottom: 0;
+  right: 0;
+  margin-right: 3%;
+  margin-bottom: 3%;
 }
 </style>
