@@ -13,7 +13,7 @@
       <div align="center">
         <img
           class="brand-background-pattern"
-          src="../../assets/images/brand_background_pattern.png"
+          src="../../assets/images/brand_background_pattern_opacity20.png"
         />
         <div class="into-web-modal-body my-5">
           <p v-if="isUserPerformAnyAction">
@@ -29,7 +29,7 @@
         </div>
         <img
           class="brand-background-pattern"
-          src="../../assets/images/brand_background_pattern.png"
+          src="../../assets/images/brand_background_pattern_opacity20.png"
         />
       </div>
     </template>
@@ -62,7 +62,6 @@ export default {
 <style lang="scss" scoped>
 .brand-background-pattern {
   width: 100%;
-  opacity: 20%; 
 }
 
 .into-web-modal-body {
