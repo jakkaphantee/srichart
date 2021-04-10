@@ -32,28 +32,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  data() {
-    return {
-      bottomNavigationList: [
-        {
-          label: 'กำเนิด',
-          to: ''
-        },
-        {
-          label: 'พิสูจน์ตน',
-          to: ''
-        },
-        {
-          label: 'คลังสินค้า',
-          to: ''
-        },
-        {
-          label: 'ผู้จัดทำ',
-          to: ''
-        }
-      ]
-    }
+  computed: {
+    ...mapState('preference', {
+      bottomNavigationList: state => state.menuList
+    })
   }
 }
 </script>
@@ -67,7 +52,7 @@ export default {
   max-height: 1080px;
 }
 .home-background-video {
-  position: fixed;
+  position: relative;
   right: 0;
   bottom: 0;
   min-width: 100%;
