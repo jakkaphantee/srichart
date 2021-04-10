@@ -1,5 +1,5 @@
 <template>
-  <div class="intro-page">
+  <div class="intro-page" align="left">
     <div class="content-left">
     </div>
     <div class="content-right">
@@ -24,39 +24,56 @@
           </div>
         </div>
       </div>
-      <button class="text-button skip-button">
+      <button
+        class="text-button skip-button"
+        @click="changeUserPage('home')"
+      >
         ข้าม
       </button>
     </div>
     <ActionButton @changeImageType="changeImageType" />
+    <IntoWebsiteModal
+      v-bind="{
+        isModalOpen: isIntoWebsiteModalOpen,
+        isUserPerformAnyAction
+      }"
+    />
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import IntroTimeCounter from '@/components/Intro/IntroTimeCounter.vue'
 import ActionButton from '@/components/Intro/ActionButton.vue'
+import IntoWebsiteModal from '@/components/Intro/IntoWebsiteModal.vue'
 
 export default {
   name: 'Intro',
   components: {
     IntroTimeCounter,
-    ActionButton
+    ActionButton,
+    IntoWebsiteModal
   },
   data() {
     return {
       introHeadText: 'ปลุกหญิงสาวผู้นี้\nภายใน ๖๐ วินาที',
       introBodyText: 'หลายๆ คนบอกว่าความสุข\nของผู้หญิงคือการตื่นเช้ามา\nทำอาหารอร่อยๆ ให้คนรัก',
       introFooterText: 'จริงฤา??',
-      isUserPerformAnyAction: false
+      isUserPerformAnyAction: false,
+      isIntoWebsiteModalOpen: false
     }
   },
   methods: {
+    ...mapMutations('user', {
+      changeUserPage: 'changeUserPage'
+    }),
     changeImageType(actionType) {
       this.isUserPerformAnyAction = true
-      console.log(actionType) // change left side image
+      console.log(actionType)
+      // change left side image
     },
     showEnterSiteModal() {
-      alert('show modal')
+      this.isIntoWebsiteModalOpen = true
     }
   }
 }

@@ -14,3 +14,15 @@ body {
   margin: 0px;
   color: black;
 }
+
+.modal-content {
+  font-family: 'Krub';
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 0;
+
+  .modal-body {
+    padding: 0;
+  }
+}

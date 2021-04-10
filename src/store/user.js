@@ -1,7 +1,7 @@
 const state = () => ({
   user: {
     type: '',
-    currentPage: ''
+    currentPage: 'intro'
   }
 })
 
