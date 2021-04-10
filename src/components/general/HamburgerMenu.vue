@@ -113,7 +113,7 @@ export default {
 
 .overlay-menu-button {
   font-family: '9_our_king';
-  font-size: 96px;
+  font-size: 68px;
   color: white;
 }
 </style>

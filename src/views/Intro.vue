@@ -16,7 +16,7 @@
           </strong>
         </div>
       </div>
-      <div class="mt-5" align="left">
+      <div class="mt-3" align="left">
         <div class="intro-body-text">
           {{ introBodyText }}
           <div id="intro-footer">
@@ -112,7 +112,7 @@ $themed-red: #8D0000;
 
 .intro-head-text {
   font-family: '9_our_king';
-  font-size: 72px;
+  font-size: 54px;
   color: black;
   white-space: pre-line;
   line-height: 80px;
@@ -120,7 +120,7 @@ $themed-red: #8D0000;
 
 .intro-body-text {
   width: fit-content;
-  font-size: 28px;
+  font-size: 24px;
   white-space: pre-line;
   text-align-last: left;
   margin-left: 30%;

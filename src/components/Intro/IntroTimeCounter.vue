@@ -74,17 +74,17 @@ export default {
   height: fit-content;
 
   .timer-icon {
-    width: 210px;
-    height: 210px;
+    width: 150px;
+    height: 150px;
   }
   
   .timer-text {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -25%);
+    transform: translate(-50%, -20%);
     font-family: '9_our_king';
-    font-size: 72px;
+    font-size: 48px;
     color: white;
   }
 }
