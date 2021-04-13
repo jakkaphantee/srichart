@@ -82,6 +82,32 @@ export default {
 <style lang="scss" scoped>
 $themed-red: #8D0000;
 
+@media (max-width: 1920px) {
+  .intro-head-text {
+    font-size: 4vw;
+  }
+  .intro-body-text {
+    font-size: 1.5vw;
+    
+    #intro-footer {
+      font-size: 3vw;
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .intro-head-text {
+    font-size: 72px;
+  }
+  .intro-body-text {
+    font-size: 32px;
+
+    #intro-footer {
+      font-size: 62px;
+    }
+  }
+}
+
 .intro-page {
   position: relative;
   background-image: url('../assets/images/intro/intro_background.png');
@@ -112,7 +138,6 @@ $themed-red: #8D0000;
 
 .intro-head-text {
   font-family: '9_our_king';
-  font-size: 54px;
   color: black;
   white-space: pre-line;
   line-height: 80px;
@@ -120,13 +145,11 @@ $themed-red: #8D0000;
 
 .intro-body-text {
   width: fit-content;
-  font-size: 24px;
   white-space: pre-line;
   text-align-last: left;
   margin-left: 30%;
   
   #intro-footer {
-    font-size: 48px;
     font-weight: 600;
   }
 }

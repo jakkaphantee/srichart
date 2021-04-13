@@ -35,6 +35,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media (max-width: 1920px) {
+  .action-button {
+    width: 10vw;
+    height: 10vw;
+    font-size: 2.5vw;
+  }
+}
+
+@media (min-width: 1920px) {
+  .action-button {
+    width: 150px;
+    height: 150px;
+    font-size: 48px;
+  }
+}
+
 .action-button-container {
   position: absolute;
   left: 50%;
@@ -47,13 +63,11 @@ export default {
 }
 
 .action-button {
-  display: inline;
-  width: 140px;
-  height: 140px;
+  max-width: 150px;
+  max-height: 150px;
   background-color: black;
   border: none;
   color: white;
-  font-size: 54px;
   margin-right: 100px;
 }
 </style>
