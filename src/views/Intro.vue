@@ -88,6 +88,7 @@ $themed-red: #8D0000;
   }
   .intro-body-text {
     font-size: 1.5vw;
+    margin-left: 30%;
     
     #intro-footer {
       font-size: 3vw;
@@ -101,6 +102,7 @@ $themed-red: #8D0000;
   }
   .intro-body-text {
     font-size: 32px;
+    margin-left: 300px;
 
     #intro-footer {
       font-size: 62px;
@@ -147,7 +149,7 @@ $themed-red: #8D0000;
   width: fit-content;
   white-space: pre-line;
   text-align-last: left;
-  margin-left: 30%;
+  margin-left: 300px;
   
   #intro-footer {
     font-weight: 600;
