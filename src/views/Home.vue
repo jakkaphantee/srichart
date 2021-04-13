@@ -48,7 +48,6 @@ export default {
   position: relative;
   width: 100vw;
   height: 100vh;
-  max-width: 1920px;
   max-height: 1080px;
 }
 .home-background-video {
@@ -65,6 +64,7 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   width: 7%;
+  max-width: 140px;
   margin-top: 15px;
   z-index: 10;
 }
@@ -74,6 +74,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
+  max-width: 1150px;
   z-index: 10;
 }
 .bottom-navigation-container {
