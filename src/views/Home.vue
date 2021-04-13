@@ -1,12 +1,5 @@
 <template>
   <div class="home-page">
-    <video
-      class="home-background-video"
-      src="../assets/images/home/home_video_background.mp4"
-      autoplay
-      muted
-      loop
-    />
     <img
       class="home-brand-logo"
       src="../assets/images/home/home_brand_logo.png"
@@ -15,9 +8,11 @@
       class="text-logo-image"
       src="../assets/images/home/home_text_logo.png"
     />
-    <div
-      class="bottom-navigation-container"
-    >
+    <img class="swing-left-head" :src="require('../assets/images/home/swing_left_head.png')" />
+    <img class="swing-left-foot" :src="require('../assets/images/home/swing_left_foot.png')" />
+    <img class="swing-right-head" :src="require('../assets/images/home/swing_right_head.png')" />
+    <img class="swing-right-foot" :src="require('../assets/images/home/swing_right_foot.png')" />
+    <div class="bottom-navigation-container">
       <button
         v-for="bottomButton in bottomNavigationList"
         :key="bottomButton.label"
@@ -44,19 +39,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$swing-duration: 2.7s;
+
 .home-page {
   position: relative;
   width: 100vw;
   height: 100vh;
-  max-height: 1080px;
-}
-.home-background-video {
-  position: relative;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+  background-image: url('../assets/images/home/home_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .home-brand-logo {
   position: absolute;
@@ -68,6 +59,81 @@ export default {
   margin-top: 15px;
   z-index: 10;
 }
+
+.swing-left-head {
+  position: absolute;
+  top: 40%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+
+.swing-left-foot {
+  position: absolute;
+  transform-origin: top;
+  animation: $swing-duration swing-start-left infinite ease-in-out;
+
+  @keyframes swing-start-left {
+    0% {
+      top: 44%;
+      left: 10px;
+      transform: rotate(30deg);
+    }
+    25% {
+      top: 45%;
+    }
+    50% {
+      top: 44%;
+      left: 68px;
+      transform: rotate(-30deg);
+    }
+    75% {
+      top: 45%;
+    }
+    100% {
+      top: 44%;
+      left: 10px;
+      transform: rotate(30deg);
+    }
+  }
+}
+
+.swing-right-head {
+  position: absolute;
+  top: 40%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+.swing-right-foot {
+  position: absolute;
+  transform-origin: top;
+  animation: $swing-duration swing-start-right infinite ease-in-out;
+
+  @keyframes swing-start-right {
+    0% {
+      top: 44%;
+      right: 10px;
+      transform: rotate(-30deg);
+    }
+    25% {
+      top: 45%;
+    }
+    50% {
+      top: 44%;
+      right: 68px;
+      transform: rotate(30deg);
+    }
+    75% {
+      top: 45%;
+    }
+    100% {
+      top: 44%;
+      right: 10px;
+      transform: rotate(-30deg);
+    }
+  }
+}
+
 .text-logo-image {
   position: absolute;
   top: 50%;
