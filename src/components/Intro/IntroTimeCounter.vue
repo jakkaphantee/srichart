@@ -1,9 +1,9 @@
 <template>
-  <div class="timer-container mt-5 pt-5" align="left">
+  <div class="timer-container" align="left">
     <img class="timer-icon" src="../../assets/images/intro/timer_icon.svg" />
-    <div class="timer-text">
+    <h1>
       {{ thaiNumberConverted }}
-    </div>
+    </h1>
   </div>
 </template>
 
@@ -68,23 +68,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@media (max-width: 1920px) {
+  .timer-container h1 {
+    font-size: 3vw;
+  }
+}
+@media (min-width: 1920px) {
+  .timer-container h1 {
+    font-size: 62px;
+  } 
+}
+
 .timer-container {
   position: relative;
   width: fit-content;
   height: fit-content;
+  margin-top: 100px;
 
   .timer-icon {
-    width: 150px;
-    height: 150px;
+    width: 10vw;
+    max-width: 210px;
+    max-height: 210px;
   }
   
-  .timer-text {
+  h1 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -20%);
+    transform: translate(-50%, -50%);
     font-family: '9_our_king';
-    font-size: 48px;
+    font-weight: 700;
     color: white;
   }
 }
