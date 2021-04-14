@@ -78,17 +78,18 @@ export default {
       const contentContainer = document.querySelector('.content-intro-page')
       const result = scrollEventCheck.isInViewport(contentContainer)
       if (result) {
+        const contentIntroPage = document.getElementById('content-intro-page')
+        contentIntroPage.focus()
         this.isScrollEnable = true
         document.addEventListener('wheel', this.contentTextAnimate)
-        // this.$emit('setScrollLock', true)
+        this.$emit('setScrollLock', true)
       } else {
         this.isScrollEnable = false
         document.removeEventListener('wheel', this.contentTextAnimate)
-        // this.$emit('setScrollLock', false)
+        this.$emit('setScrollLock', false)
       }
     },
     contentTextAnimate($event) {
-      console.log($event)
       const direction = scrollEventCheck.checkScrollDirection($event)
       if (direction === 'up') {
         this.scrollPoint -= 1

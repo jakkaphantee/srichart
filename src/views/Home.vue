@@ -48,6 +48,7 @@ $swing-duration: 2.7s;
   background-image: url('../assets/images/home/home_background.png');
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 .home-brand-logo {
   position: absolute;
@@ -71,7 +72,7 @@ $swing-duration: 2.7s;
 
 .swing-left-foot {
   position: absolute;
-  width: 2.7vw;
+  width: 3vw;
   margin-top: 10px;
   transform-origin: top;
   max-width: 55px;
@@ -113,7 +114,7 @@ $swing-duration: 2.7s;
 
 .swing-right-foot {
   position: absolute;
-  width: 2.7vw;
+  width: 3vw;
   max-width: 55px;
   margin-top: 10px;
   transform-origin: top;
