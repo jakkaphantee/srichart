@@ -75,7 +75,7 @@ export default {
 }
 
 .hamburger-overlay-menu {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   left: -100%;
@@ -88,7 +88,7 @@ export default {
   }
 
   .overlay-close-button {
-    position: inherit;
+    position: absolute;
     top: 0;
     right: 0;
     width: 50px;
@@ -102,7 +102,7 @@ export default {
   }
   
   .overlay-menu-container {
-    position: inherit;
+    position: absolute;
     width: 100%;
     height: fit-content;
     top: 50%;
