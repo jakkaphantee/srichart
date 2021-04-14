@@ -7,6 +7,9 @@
       v-if="currentPage !== 'intro'"
       @setScrollLock="setScrollLock"
     />
+    <ContentFirst
+      v-if="currentPage !== 'intro'"
+    />
   </div>
 </template>
 
@@ -19,7 +22,8 @@ export default {
     HamburgerMenu: HamburgerMenu,
     Intro: () => import('./views/Intro'),
     Home: () => import('./views/Home'),
-    ContentIntro: () => import('./views/ContentIntro')
+    ContentIntro: () => import('./views/ContentIntro'),
+    ContentFirst: () => import('./views/ContentFirst')
   },
   computed: {
     ...mapState('user', {
