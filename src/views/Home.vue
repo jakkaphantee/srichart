@@ -64,12 +64,17 @@ $swing-duration: 2.7s;
   position: absolute;
   top: 40%;
   left: 20px;
+  width: 5vw;
+  max-width: 100px;
   transform: translateY(-50%);
 }
 
 .swing-left-foot {
   position: absolute;
+  width: 2.7vw;
+  margin-top: 10px;
   transform-origin: top;
+  max-width: 55px;
   animation: $swing-duration swing-start-left infinite ease-in-out;
 
   @keyframes swing-start-left {
@@ -101,11 +106,16 @@ $swing-duration: 2.7s;
   position: absolute;
   top: 40%;
   right: 20px;
+  width: 5vw;
+  max-width: 100px;
   transform: translateY(-50%);
 }
 
 .swing-right-foot {
   position: absolute;
+  width: 2.7vw;
+  max-width: 55px;
+  margin-top: 10px;
   transform-origin: top;
   animation: $swing-duration swing-start-right infinite ease-in-out;
 
