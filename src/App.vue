@@ -10,6 +10,9 @@
     <ContentFirst
       v-if="currentPage !== 'intro'"
     />
+    <ContentSwitchRole
+      v-if="currentPage !== 'intro'"
+    />
   </div>
 </template>
 
@@ -23,7 +26,8 @@ export default {
     Intro: () => import('./views/Intro'),
     Home: () => import('./views/Home'),
     ContentIntro: () => import('./views/ContentIntro'),
-    ContentFirst: () => import('./views/ContentFirst')
+    ContentFirst: () => import('./views/ContentFirst'),
+    ContentSwitchRole: () => import('./views/ContentSwitchRole')
   },
   computed: {
     ...mapState('user', {
