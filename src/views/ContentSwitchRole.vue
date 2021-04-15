@@ -138,12 +138,12 @@ $transition-duration: .2s;
       &#head-primary {
         left: 50%;
         transform: translateX(-50%);
-        transition: top $transition-duration;
+        transition: top $transition-duration ease-in-out;
       }
       &#head-secondary {
         left: 50%;
         transform: translateX(-50%);
-        transition: top $transition-duration;
+        transition: top $transition-duration ease-in-out;
       }
 
       &.is-primary {
@@ -180,7 +180,7 @@ $transition-duration: .2s;
     }
 
     div {
-      transition: $transition-duration ease-out;
+      transition: $transition-duration ease-in-out;
 
       &#image-primary {
         position: inherit;

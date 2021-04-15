@@ -1,12 +1,5 @@
 <template>
   <div class="content-first-page">
-    <video
-      class="content-first-background-video"
-      :src="require('@/assets/images/content-first/content_first_background_video.mp4')"
-      autoplay
-      muted
-      loop
-    />
     <div class="content-first-container">
       <div class="content-first-text" align="right">
         <h1>
@@ -65,7 +58,9 @@ export default {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: black;
+  background-image: url('../assets/images/content-first/content_born_background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow: hidden;
   align-content: center;
 }
