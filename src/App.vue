@@ -16,6 +16,9 @@
     <ContentBrief
       v-if="currentPage !== 'intro'"
     />
+    <QuizIntro
+      v-if="currentPage !== 'intro'"
+    />
   </div>
 </template>
 
@@ -31,7 +34,8 @@ export default {
     ContentIntro: () => import('./views/ContentIntro'),
     ContentFirst: () => import('./views/ContentFirst'),
     ContentSwitchRole: () => import('./views/ContentSwitchRole'),
-    ContentBrief: () => import('./views/ContentBrief')
+    ContentBrief: () => import('./views/ContentBrief'),
+    QuizIntro: () => import('./views/Quiz/QuizIntro')
   },
   computed: {
     ...mapState('user', {
