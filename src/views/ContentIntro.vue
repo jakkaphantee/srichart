@@ -4,10 +4,6 @@
     class="content-intro-page"
     :class="isScrollEnable ? 'content-enable-scroll' : ''"
   >
-    <div v-if="false" class="box-gradient">
-      <div id="box-upper" />
-      <div id="box-lower" />
-    </div>
     <div
       v-if="false"
       class="content-text"
@@ -109,43 +105,6 @@ export default {
 <style lang="scss" scoped>
 $font-color: #D11111;
 
-.box-gradient {
-  position: absolute;
-  top: 50%;
-  transform: rotate(270deg);
-  width: 115%;
-  height: 200px;
-  mask: url('../assets/images/icons/diamond_rectangle.svg');
-  mask-size: contain;
-  mask-position: center;
-  mask-repeat: repeat;
-  animation: 4s animate-box infinite linear;
-
-  @keyframes animate-box {
-    from {
-      mask-position: center;
-    }
-    to {
-      mask-position: left;
-    }
-  }
-
-  #box-upper {
-    position: inherit;
-    top: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to right, red 10%, yellow 20%, green 100%);
-  }
-  #box-lower {
-    position: inherit;
-    bottom: 0;
-    width: 100%;
-    height: 50%;
-    background: white;
-  }
-}
-
 .content-intro-page {
   position: relative;
   background-color: black;
@@ -153,7 +112,7 @@ $font-color: #D11111;
   width: 100vw;
   height: 100vh;
   max-height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
 
   &.content-enable-scroll {
     overflow: scroll;

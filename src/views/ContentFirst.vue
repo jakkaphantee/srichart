@@ -1,5 +1,9 @@
 <template>
   <div class="content-first-page">
+    <div class="box-gradient">
+      <div id="box-upper" />
+      <div id="box-lower" />
+    </div>
     <div class="content-first-container">
       <div class="content-first-text" align="right">
         <h1>
@@ -98,6 +102,50 @@ export default {
 
   p {
     margin-top: 50px;
+  }
+}
+
+$middle-text-gradient-1: black;
+$middle-text-gradient-2: #3ae9ea;
+$middle-text-gradient-3: white;
+
+.box-gradient {
+  position: absolute;
+  top: 50%;
+  transform: rotate(270deg);
+  width: 170vh;
+  height: 200px;
+  mask: url('../assets/images/content-first/middle_text.svg');
+  mask-size: contain;
+  mask-repeat: repeat;
+  animation: 2s animate-box infinite linear;
+
+  @keyframes animate-box {
+    from {
+      mask-position: right;
+    }
+    to {
+      mask-position: left;
+    }
+  }
+
+  #box-upper {
+    position: inherit;
+    top: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to left,
+      $middle-text-gradient-1 70%,
+      $middle-text-gradient-2 80%,
+      $middle-text-gradient-3 90%
+    );
+  }
+  #box-lower {
+    position: inherit;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    background: white;
   }
 }
 </style>
