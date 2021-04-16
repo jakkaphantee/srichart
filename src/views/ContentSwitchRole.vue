@@ -27,13 +27,15 @@
         <h1>
           คอนเซปต์
         </h1>
-        <div
+        <img
           id="image-primary"
           :class="currentPrimary ? 'is-primary' : 'is-secondary'"
+          :src="require('@/assets/images/content-switch-role/man_primary.png')"
         />
-        <div
+        <img
           id="image-secondary"
           :class="currentPrimary ? 'is-secondary' : 'is-primary'"
+          :src="require('@/assets/images/content-switch-role/man_secondary.png')"
         />
       </div>
     </div>
@@ -180,22 +182,11 @@ $transition-duration: .2s;
       z-index: 5;
     }
 
-    div {
+    img {
+      position: inherit;
+      width: 25vw;
+      max-width: 500px;
       transition: $transition-duration ease-in-out;
-
-      &#image-primary {
-        position: inherit;
-        width: 400px;
-        height: 500px;
-        background-color: red;
-      }
-
-      &#image-secondary {
-        position: inherit;
-        width: 400px;
-        height: 500px;
-        background-color: orange;
-      }
 
       &.is-primary {
         top: 30%;
