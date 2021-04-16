@@ -1,6 +1,14 @@
 <template>
   <div class="intro-page" align="left">
     <div class="content-left">
+      <img
+        :src="require('@/assets/images/intro/woman_sleep.png')"
+        :class="actionType === '' ? 'is-primary' : 'is-secondary'"
+      />
+      <img
+        :src="require('@/assets/images/intro/woman_awake.png')"
+        :class="actionType !== '' ? 'is-primary' : 'is-secondary'"
+      />
     </div>
     <div class="content-right">
       <div class="pl-5">
@@ -58,7 +66,9 @@ export default {
       introBodyText: 'หลายๆ คนบอกว่าความสุข\nของผู้หญิงคือการตื่นเช้ามา\nทำอาหารอร่อยๆ ให้คนรัก',
       introFooterText: 'จริงฤา??',
       isUserPerformAnyAction: false,
-      isIntoWebsiteModalOpen: false
+      isIntoWebsiteModalOpen: false,
+      actionType: '',
+      actionTimeout: null
     }
   },
   methods: {
@@ -67,8 +77,11 @@ export default {
     }),
     changeImageType(actionType) {
       this.isUserPerformAnyAction = true
-      console.log(actionType)
-      // change left side image
+      this.actionType = actionType
+      clearTimeout(this.actionTimeout)
+      this.actionTimeout = setTimeout(() => {
+        this.actionType = ''
+      }, 1200)
     },
     showEnterSiteModal() {
       this.isIntoWebsiteModalOpen = true
@@ -124,8 +137,22 @@ $themed-red: #8D0000;
   top: 0;
   left: 0;
   background-color: $themed-red;
-  width: 53%;
+  width: 52.5%;
   height: 100%;
+
+  img {
+    position: absolute;
+    width: 99%;
+    height: 100%;
+
+    &.is-primary {
+      z-index: 5;
+    }
+
+    &.is-secondary {
+      z-index: 4;
+    }
+  }
 }
 
 .content-right {
