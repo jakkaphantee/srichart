@@ -1,5 +1,5 @@
 <template>
-  <div class="app-scroll-snap" align="center">
+  <div align="center">
     <HamburgerMenu v-if="currentPage !== 'intro'" />
     <Intro v-if="currentPage === 'intro'" />
     <LandingPage v-if="currentPage !== 'intro'" />
@@ -28,9 +28,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.app-scroll-snap {
-  scroll-snap-type: y mandatory;
-}
-</style>

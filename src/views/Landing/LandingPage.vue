@@ -1,7 +1,7 @@
 <template>
   <div>
     <Home />
-    <ContentIntro @setScrollLock="setScrollLock" />
+    <ContentIntro />
     <ContentFirst />
     <ContentSwitchRole />
     <ContentBrief />
