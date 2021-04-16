@@ -1,6 +1,6 @@
 <template>
   <div class="timer-container" align="left">
-    <img class="timer-icon" src="../../assets/images/intro/timer_icon.svg" />
+    <img class="timer-icon" :src="require('@/assets/images/intro/timer_icon.svg')" />
     <h1>
       {{ thaiNumberConverted }}
     </h1>
@@ -83,7 +83,7 @@ export default {
   position: relative;
   width: fit-content;
   height: fit-content;
-  margin-top: 100px;
+  margin-top: 11vh;
 
   .timer-icon {
     width: 10vw;

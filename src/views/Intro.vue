@@ -11,9 +11,7 @@
           @timesUp="showEnterSiteModal()"
         />
         <div class="intro-head-text">
-          <strong>
-            {{ introHeadText }}
-          </strong>
+          {{ introHeadText }}
         </div>
       </div>
       <div class="mt-3" align="left">
@@ -140,17 +138,21 @@ $themed-red: #8D0000;
 }
 
 .intro-head-text {
-  font-family: '9_our_king';
-  color: black;
+  position: absolute;
+  top: 11vh;
+  left: 15vw;
+  color: white;
+  font-weight: 600;
   white-space: pre-line;
-  line-height: 80px;
+  line-height: 8vh;
 }
 
 .intro-body-text {
   width: fit-content;
   white-space: pre-line;
   text-align-last: left;
-  margin-left: 300px;
+  margin-top: 10vh;
+  margin-left: 16vw;
   
   #intro-footer {
     font-weight: 600;
