@@ -116,8 +116,8 @@ $themed-red: #8D0000;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 .content-left {

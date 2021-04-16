@@ -6,7 +6,7 @@
       class="action-button"
       @click="$emit('changeImageType', button.action)"
     >
-      {{ button.label }}
+      <img width="100%" :src="require(`@/assets/images/intro/${button.imageName}.png`)" />
     </button>
   </div>
 </template>
@@ -17,16 +17,19 @@ export default {
     return {
       actionList: [
         {
+          label: 'ปาก',
+          action: 'mouth',
+          imageName: 'mouth'
+        },
+        {
           label: 'มือ',
-          action: 'hand'
+          action: 'hand',
+          imageName: 'hand'
         },
         {
           label: 'เท้า',
-          action: 'feet'
-        },
-        {
-          label: 'ปาก',
-          action: 'mouth'
+          action: 'feet',
+          imageName: 'foot'
         }
       ]
     }
@@ -35,39 +38,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media (max-width: 1920px) {
-  .action-button {
-    width: 10vw;
-    height: 10vw;
-    font-size: 2.5vw;
-  }
-}
-
-@media (min-width: 1920px) {
-  .action-button {
-    width: 150px;
-    height: 150px;
-    font-size: 48px;
-  }
-}
-
 .action-button-container {
   position: absolute;
   left: 50%;
-  right: 49%;
   bottom: 0;
   width: fit-content;
-  height: fit-content;
-  margin-bottom: 40px;
   z-index: 10;
 }
 
 .action-button {
+  width: 9vw;
+  height: 9vw;
   max-width: 150px;
   max-height: 150px;
   background-color: black;
   border: none;
   color: white;
-  margin-right: 100px;
+  margin-right: 5vw;
+  margin-bottom: 3.5vh;
+  padding: 0;
 }
 </style>
