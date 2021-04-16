@@ -37,7 +37,7 @@ export default {
   methods: {
     scrollListener() {
       const contentBriefContainer = document.querySelector('.content-brief-page')
-      const isInViewport = scrollEventCheck.isInViewport(contentBriefContainer)
+      const isInViewport = scrollEventCheck.isEnterViewport(contentBriefContainer)
       if (isInViewport) {
         this.isPageInViewport = true
       }
@@ -74,7 +74,7 @@ $font-size-fixed: 65px;
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-image: url('../assets/images/content-brief/content_brief_background.png');
+  background-image: url('../../assets/images/content-brief/content_brief_background.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

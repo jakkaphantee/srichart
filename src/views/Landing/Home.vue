@@ -2,16 +2,16 @@
   <div class="home-page">
     <img
       class="home-brand-logo"
-      src="../assets/images/home/home_brand_logo.png"
+      :src="require('@/assets/images/home/home_brand_logo.png')"
     />
     <img
       class="text-logo-image"
-      src="../assets/images/home/home_text_logo.png"
+      :src="require('@/assets/images/home/home_text_logo.png')"
     />
-    <img class="swing-left-head" :src="require('../assets/images/home/swing_left_head.png')" />
-    <img class="swing-left-foot" :src="require('../assets/images/home/swing_left_foot.png')" />
-    <img class="swing-right-head" :src="require('../assets/images/home/swing_right_head.png')" />
-    <img class="swing-right-foot" :src="require('../assets/images/home/swing_right_foot.png')" />
+    <img class="swing-left-head" :src="require('@/assets/images/home/swing_left_head.png')" />
+    <img class="swing-left-foot" :src="require('@/assets/images/home/swing_left_foot.png')" />
+    <img class="swing-right-head" :src="require('@/assets/images/home/swing_right_head.png')" />
+    <img class="swing-right-foot" :src="require('@/assets/images/home/swing_right_foot.png')" />
     <div class="bottom-navigation-container">
       <button
         v-for="bottomButton in bottomNavigationList"
@@ -45,7 +45,7 @@ $swing-duration: 2.7s;
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url('../assets/images/home/home_background.png');
+  background-image: url('../../assets/images/home/home_background.png');
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;

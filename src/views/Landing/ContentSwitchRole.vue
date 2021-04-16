@@ -106,7 +106,7 @@ $transition-duration: .2s;
   width: 100vw;
   height: 100vh;
   background-color: black;
-  background-image: url('../assets/images/content-switch-role/content_switch_role_background.png');
+  background-image: url('../../assets/images/content-switch-role/content_switch_role_background.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

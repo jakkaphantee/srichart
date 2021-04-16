@@ -1,24 +1,8 @@
 <template>
-  <div align="center">
+  <div class="app-scroll-snap" align="center">
     <HamburgerMenu v-if="currentPage !== 'intro'" />
     <Intro v-if="currentPage === 'intro'" />
-    <Home v-if="currentPage !== 'intro'" />
-    <ContentIntro
-      v-if="currentPage !== 'intro'"
-      @setScrollLock="setScrollLock"
-    />
-    <ContentFirst
-      v-if="currentPage !== 'intro'"
-    />
-    <ContentSwitchRole
-      v-if="currentPage !== 'intro'"
-    />
-    <ContentBrief
-      v-if="currentPage !== 'intro'"
-    />
-    <QuizIntro
-      v-if="currentPage !== 'intro'"
-    />
+    <LandingPage v-if="currentPage !== 'intro'" />
   </div>
 </template>
 
@@ -30,12 +14,7 @@ export default {
   components: {
     HamburgerMenu: HamburgerMenu,
     Intro: () => import('./views/Intro'),
-    Home: () => import('./views/Home'),
-    ContentIntro: () => import('./views/ContentIntro'),
-    ContentFirst: () => import('./views/ContentFirst'),
-    ContentSwitchRole: () => import('./views/ContentSwitchRole'),
-    ContentBrief: () => import('./views/ContentBrief'),
-    QuizIntro: () => import('./views/Quiz/QuizIntro')
+    LandingPage: () => import('./views/Landing/LandingPage')
   },
   computed: {
     ...mapState('user', {
@@ -49,3 +28,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.app-scroll-snap {
+  scroll-snap-type: y mandatory;
+}
+</style>

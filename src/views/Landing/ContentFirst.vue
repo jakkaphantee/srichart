@@ -62,7 +62,7 @@ export default {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url('../assets/images/content-first/content_born_background.png');
+  background-image: url('../../assets/images/content-first/content_born_background.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -115,7 +115,7 @@ $middle-text-gradient-3: white;
   transform: rotate(270deg);
   width: 170vh;
   height: 200px;
-  mask: url('../assets/images/content-first/middle_text.svg');
+  mask: url('../../assets/images/content-first/middle_text.svg');
   mask-size: contain;
   mask-repeat: repeat;
   animation: 2s animate-box infinite linear;
