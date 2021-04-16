@@ -49,6 +49,7 @@ $swing-duration: 2.7s;
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+  background-position: center;
 }
 .home-brand-logo {
   position: absolute;

@@ -61,6 +61,7 @@ export default {
   background-image: url('../assets/images/content-first/content_born_background.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   overflow: hidden;
   align-content: center;
 }

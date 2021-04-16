@@ -77,6 +77,7 @@ $font-size-fixed: 65px;
   background-image: url('../assets/images/content-brief/content_brief_background.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   overflow: hidden;
   align-content: center;
 }

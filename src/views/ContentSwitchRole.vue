@@ -107,6 +107,7 @@ $transition-duration: .2s;
   background-image: url('../assets/images/content-switch-role/content_switch_role_background.png');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .content-switch-role-container {

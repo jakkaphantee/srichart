@@ -115,6 +115,7 @@ $themed-red: #8D0000;
   background-image: url('../assets/images/intro/intro_background.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   min-width: 100vw;
   min-height: 100vh;
 }
