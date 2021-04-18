@@ -42,7 +42,12 @@ export default {
   },
   mounted() {
     this.scrollPoint = window.innerHeight * 40 / 100
-    document.addEventListener('scroll', this.landingPageScrollListener)
+    if (this.currentHomeComponent !== '') {
+      this.$nextTick(() => {
+        this.scrollToPage(this.currentHomeComponent)
+      })
+    }
+    // document.addEventListener('scroll', this.landingPageScrollListener)
   },
   methods: {
     ...mapMutations('preference', {
@@ -52,12 +57,7 @@ export default {
       document.getElementById(elementId).scrollIntoView({ behavior: 'smooth' })
     },
     landingPageScrollListener() {
-      // const homePage = document.getElementById('home-page').getBoundingClientRect()
-      // const contentIntroPage = document.getElementById('content-intro-page').getBoundingClientRect()
-      // const contentFirstPage = document.getElementById('content-first-page').getBoundingClientRect()
-      // const contentSwitchRolePage = document.getElementById('content-switch-role-page').getBoundingClientRect()
-      // const contentBriefPage = document.getElementById('content-brief-page').getBoundingClientRect()
-      // const quizIntroPage = document.getElementById('quiz-intro-page').getBoundingClientRect()
+      //
     }
   }
 }
