@@ -87,8 +87,8 @@ export default {
 
   .timer-icon {
     width: 10vw;
-    max-width: 210px;
-    max-height: 210px;
+    max-width: 220px;
+    max-height: 220px;
   }
   
   h1 {

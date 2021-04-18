@@ -142,8 +142,10 @@ $themed-red: #8D0000;
 
   img {
     position: absolute;
-    width: 99%;
+    bottom: 0;
+    right: 0;
     height: 100%;
+    border-right: 4px solid $themed-red;
 
     &.is-primary {
       z-index: 5;
@@ -167,7 +169,7 @@ $themed-red: #8D0000;
 .intro-head-text {
   position: absolute;
   top: 11vh;
-  left: 15vw;
+  left: 13vw;
   color: white;
   font-weight: 600;
   white-space: pre-line;
