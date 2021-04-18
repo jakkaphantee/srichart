@@ -17,28 +17,6 @@
         </strong>
         <img :src="require('@/assets/images/content-intro/text_icon.png')" />
       </div>
-      <!-- <div
-        id="content-text-1"
-        class="content-text"
-        :style="textFirstStyle"
-      >
-        <img :src="require('@/assets/images/content-intro/text_icon.png')" />
-        <strong>
-          ภรรยาที่ดีต้องเชื่อฟังสามีเท่านั้น
-        </strong>
-        <img :src="require('@/assets/images/content-intro/text_icon.png')" />
-      </div> -->
-      <!-- <div
-        id="content-text-2"
-        class="content-text"
-        :style="textSecondStyle"
-      >
-        <img :src="require('@/assets/images/content-intro/text_icon.png')" />
-        <strong>
-          สเน่ห์หญิงไทยอยู่ที่ปลายจวัก
-        </strong>
-        <img :src="require('@/assets/images/content-intro/text_icon.png')" />
-      </div> -->
     </div>
   </div>
 </template>
@@ -135,6 +113,9 @@ export default {
       const newPosition = positionChange - defaultPosition
       return newPosition
     }
+  },
+  beforeDestroy() {
+    document.removeEventListener('wheel', this.wheelListener)
   }
 }
 </script>

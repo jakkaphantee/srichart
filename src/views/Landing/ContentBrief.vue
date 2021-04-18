@@ -42,6 +42,9 @@ export default {
         this.isPageInViewport = true
       }
     }
+  },
+  beforeDestroy() {
+    document.removeEventListener('scroll', this.scrollListener)
   }
 }
 </script>

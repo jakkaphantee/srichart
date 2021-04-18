@@ -31,6 +31,7 @@
       <button
         class="text-button quiz-button second-button"
         :class="currentQuizIntroStep === 2 ? 'show-second-button' :''"
+        @click="changeUserPage('quiz')"
       >
         สวมบทบาท
       </button>
@@ -44,6 +45,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   data() {
     return {
@@ -56,6 +59,9 @@ export default {
     firstButton.addEventListener('transitionend', this.onFirstButtonTransitionEnd)
   },
   methods: {
+    ...mapMutations('preference', {
+      changeUserPage: 'changeUserPage'
+    }),
     onFirstButtonTransitionEnd() {
       this.currentQuizIntroStep = 2
     }
