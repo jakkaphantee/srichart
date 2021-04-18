@@ -1,16 +1,12 @@
 const state = () => ({
   user: {
-    type: '',
-    currentPage: 'intro'
+    type: ''
   }
 })
 
 const mutations = {
   changeUserType: (state, type) => {
     state.user.type = type
-  },
-  changeUserPage: (state, page) => {
-    state.user.currentPage = page
   }
 }
 

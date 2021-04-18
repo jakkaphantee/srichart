@@ -2,11 +2,11 @@ const state = () => ({
   menuList: [
     {
       label: 'กำเนิด',
-      to: ''
+      to: 'content-first-page'
     },
     {
       label: 'พิสูจน์ตน',
-      to: ''
+      to: 'quiz-intro-page'
     },
     {
       label: 'คลังสินค้า',
@@ -16,10 +16,22 @@ const state = () => ({
       label: 'ผู้จัดทำ',
       to: ''
     }
-  ]
+  ],
+  currentPage: 'intro',
+  currentHomeComponent: ''
 })
+
+const mutations = {
+  changeUserPage: (state, page) => {
+    state.currentPage = page
+  },
+  changeUserHomeComponent: (state, componentId) => {
+    state.currentHomeComponent = componentId
+  }
+}
 
 export default {
   namespaced: true,
-  state
+  state,
+  mutations
 }

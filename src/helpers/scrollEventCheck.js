@@ -13,7 +13,7 @@ const isEnterViewport = (element) => {
   return (rect.top < 120 && rect.top > 0) || (rect.top > -120 && rect.top < 0)
 }
 
-const isSwitchComponent = (element) => {
+const isSwitchComponent = (switchPoint, element) => {
   const rect = element.getBoundingClientRect()
   console.log(rect.top)
 }

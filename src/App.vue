@@ -17,8 +17,8 @@ export default {
     LandingPage: () => import('./views/Landing/LandingPage')
   },
   computed: {
-    ...mapState('user', {
-      currentPage: state => state.user.currentPage
+    ...mapState('preference', {
+      currentPage: state => state.currentPage
     })
   },
   methods: {

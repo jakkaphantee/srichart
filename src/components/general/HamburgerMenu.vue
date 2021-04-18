@@ -23,7 +23,7 @@
           </div>
           <button
             class="text-button overlay-menu-button"
-            @click="closeMenu()"
+            @click="closeMenu(); openPage(menu.to)"
           >
             {{ menu.label }}
           </button>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   data() {
@@ -48,11 +48,19 @@ export default {
     })
   },
   methods: {
+    ...mapMutations('preference', {
+      changeUserPage: 'changeUserPage',
+      changeUserHomeComponent: 'changeUserHomeComponent'
+    }),
     openMenu() {
       this.isMenuOpen = true
     },
     closeMenu() {
       this.isMenuOpen = false
+    },
+    openPage(componentId) {
+      this.changeUserPage('home')
+      this.changeUserHomeComponent(componentId)
     }
   }
 }

@@ -52,7 +52,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('user', {
+    ...mapMutations('preference', {
       changeUserPage: 'changeUserPage'
     })
   }

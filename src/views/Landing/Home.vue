@@ -17,6 +17,7 @@
         v-for="bottomButton in bottomNavigationList"
         :key="bottomButton.label"
         class="text-button home-text-button mx-5"
+        @click="$emit('scrollToPage', bottomButton.to)"
       >
         <strong>
           {{ bottomButton.label }}
