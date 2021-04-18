@@ -13,11 +13,6 @@ const isEnterViewport = (element) => {
   return (rect.top < 120 && rect.top > 0) || (rect.top > -120 && rect.top < 0)
 }
 
-const isSwitchComponent = (switchPoint, element) => {
-  const rect = element.getBoundingClientRect()
-  console.log(rect.top)
-}
-
 const checkScrollDirection = (event) => {
   if (event.wheelDelta && event.wheelDelta > 0) {
     return 'up'
@@ -29,6 +24,5 @@ const checkScrollDirection = (event) => {
 export default {
   isInViewport,
   isEnterViewport,
-  isSwitchComponent,
   checkScrollDirection
 }

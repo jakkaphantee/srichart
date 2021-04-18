@@ -2,33 +2,44 @@
   <div
     id="content-intro-page"
     class="content-intro-page"
-    :class="isScrollEnable ? 'content-enable-scroll' : ''"
   >
-    <div
-      v-if="false"
-      class="content-text"
-      id="content-text-1"
-    >
-      <img :src="require('@/assets/images/content-intro/text_icon.png')" />
-      <h1>
-        ภรรยาที่ดีต้องเชื่อฟังสามีเท่านั้น
-      </h1>
-      <img :src="require('@/assets/images/content-intro/text_icon.png')" />
-    </div>
-    <!-- <div class="content-text-container">
+    <div class="content-text-container">
       <div
-        class="content-text my-5"
-        :id="content.id"
         v-for="content in scrollTextList"
-        :key="content.text"
+        :key="content.id"
+        :id="content.id"
+        class="content-text"
+        :style="content.style"
       >
         <img :src="require('@/assets/images/content-intro/text_icon.png')" />
-        <h1>
+        <strong>
           {{ content.text }}
-        </h1>
+        </strong>
         <img :src="require('@/assets/images/content-intro/text_icon.png')" />
       </div>
-    </div> -->
+      <!-- <div
+        id="content-text-1"
+        class="content-text"
+        :style="textFirstStyle"
+      >
+        <img :src="require('@/assets/images/content-intro/text_icon.png')" />
+        <strong>
+          ภรรยาที่ดีต้องเชื่อฟังสามีเท่านั้น
+        </strong>
+        <img :src="require('@/assets/images/content-intro/text_icon.png')" />
+      </div> -->
+      <!-- <div
+        id="content-text-2"
+        class="content-text"
+        :style="textSecondStyle"
+      >
+        <img :src="require('@/assets/images/content-intro/text_icon.png')" />
+        <strong>
+          สเน่ห์หญิงไทยอยู่ที่ปลายจวัก
+        </strong>
+        <img :src="require('@/assets/images/content-intro/text_icon.png')" />
+      </div> -->
+    </div>
   </div>
 </template>
 
@@ -41,62 +52,88 @@ export default {
       scrollTextList: [
         {
           id: 'content-text-1',
-          text: 'ภรรยาที่ดีต้องเชื่อฟังสามีเท่านั้น'
+          text: 'ภรรยาที่ดีต้องเชื่อฟังสามีเท่านั้น',
+          style: 'bottom: -125vh;'
         },
         {
           id: 'content-text-2',
-          text: 'สเน่ห์หญิงไทยอยู่ที่ปลายจวัก'
+          text: 'สเน่ห์หญิงไทยอยู่ที่ปลายจวัก',
+          style: 'top: -5vh;'
         },
         {
           id: 'content-text-3',
-          text: 'งานบ้านงานเรือนของเรื่องของผู้หญิง'
+          text: 'งานบ้านงานเรือนของเรื่องของผู้หญิง',
+          style: 'bottom: -185vh;'
         },
         {
           id: 'content-text-4',
-          text: 'กุลสตรีต้องเรียบร้อย พูดน้อย อ่อนหวาน'
+          text: 'กุลสตรีต้องเรียบร้อย พูดน้อย อ่อนหวาน',
+          style: 'top; 5vh;'
         },
         {
           id: 'content-text-5',
-          text: 'สามีเป็นช้างเท้าหน้าภรรยาเป็นช้างเท้าหลัง'
+          text: 'สามีเป็นช้างเท้าหน้าภรรยาเป็นช้างเท้าหลัง',
+          style: 'bottom; -165vh;'
         }
       ],
-      contentBoundingRect: null,
-      isScrollEnable: false,
-      scrollPoint: -60,
-      test: false
+      windowHeightEdge: 0,
+      currentComponentTopRect: null,
+      scrollDirection: '',
+      textPositions: {
+        first: -125,
+        second: 0,
+        third: -185,
+        fifth: -165
+      }
     }
   },
   computed: {
-    contentTextStyle() {
-      return `bottom: ${this.scrollPoint}vh;`
+    isPageInViewport() {
+      return (this.currentComponentTopRect > 0) && (this.currentComponentTopRect < this.windowHeightEdge)
+    }
+  },
+  watch: {
+    currentComponentTopRect() {
+      if (this.isPageInViewport) {
+        const pixelChange = this.windowHeightEdge - this.currentComponentTopRect
+        const changeInPercent = (pixelChange * 100) / window.innerHeight
+        if (changeInPercent === 100) {
+          this.textPositions = {
+            first: 0,
+            second: 105,
+            third: 20,
+            forth: 95,
+            fifth: 0
+          }
+        } else {
+          this.textPositions.first = this.calculateNewPosition(changeInPercent, 125)
+          this.textPositions.second = changeInPercent + 5
+          this.textPositions.third = this.calculateNewPosition(changeInPercent, 185) + 20
+          this.textPositions.forth = changeInPercent - 5
+          this.textPositions.fifth = this.calculateNewPosition(changeInPercent, 165)
+        }
+        this.scrollTextList[0].style = `bottom: ${this.textPositions.first}vh;`
+        this.scrollTextList[1].style = `top: ${this.textPositions.second}vh;`
+        this.scrollTextList[2].style = `bottom: ${this.textPositions.third}vh;`
+        this.scrollTextList[3].style = `top: ${this.textPositions.forth}vh;`
+        this.scrollTextList[4].style = `bottom: ${this.textPositions.fifth}vh;`
+      }
     }
   },
   mounted() {
-    document.addEventListener('scroll', this.scrollListener)
+    this.windowHeightEdge = window.innerHeight * 2
+    document.addEventListener('wheel', this.wheelListener)
   },
   methods: {
-    scrollListener() {
-      const contentContainer = document.querySelector('.content-intro-page')
-      const result = scrollEventCheck.isInViewport(contentContainer)
-      if (result) {
-        const contentIntroPage = document.getElementById('content-intro-page')
-        contentIntroPage.focus()
-        this.isScrollEnable = true
-        document.addEventListener('wheel', this.contentTextAnimate)
-        this.$emit('setScrollLock', true)
-      } else {
-        this.isScrollEnable = false
-        document.removeEventListener('wheel', this.contentTextAnimate)
-        this.$emit('setScrollLock', false)
-      }
+    wheelListener($event) {
+      const contentFirstPageRect = document.getElementById('content-first-page').getBoundingClientRect()
+      this.currentComponentTopRect = contentFirstPageRect.top
+      this.scrollDirection = scrollEventCheck.checkScrollDirection($event)
     },
-    contentTextAnimate($event) {
-      const direction = scrollEventCheck.checkScrollDirection($event)
-      if (direction === 'up') {
-        this.scrollPoint -= 1
-      } else {
-        this.scrollPoint += 1
-      }
+    calculateNewPosition(changeInPercent, defaultPosition) {
+      const positionChange = (changeInPercent * defaultPosition) / 100
+      const newPosition = positionChange - defaultPosition
+      return newPosition
     }
   }
 }
@@ -105,6 +142,18 @@ export default {
 <style lang="scss" scoped>
 $font-color: #D11111;
 
+@media (max-width: 1920px) {
+  .content-text-container {
+    font-size: 4vw;
+  }
+}
+
+@media (min-width: 1920px) {
+  .content-text-container {
+    font-size: 80px;
+  }
+}
+
 .content-intro-page {
   position: relative;
   background-color: black;
@@ -112,44 +161,59 @@ $font-color: #D11111;
   width: 100vw;
   height: 100vh;
   max-height: 100vh;
-  // overflow: hidden;
-
-  &.content-enable-scroll {
-    overflow: scroll;
-  }
-  
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
+  overflow: hidden;
 }
 
 .content-text-container {
-  transform: rotate(270deg);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1920px;
 }
 
 .content-text {
   width: fit-content;
-
-  &.paused-animate {
-    animation-play-state: paused !important;
-  }
-
-  &.running-animate {
-    animation-play-state: running !important;
-  }
+  height: fit-content;
+  padding-left: 60px;
+  padding-right: 60px;
 
   &#content-text-1 {
     position: absolute;
-    bottom: -60vh;
-    left: -25vw;
+    left: 18vw;
     transform: rotate(270deg);
+    transform-origin: left;
+  }
+
+  &#content-text-2 {
+    position: absolute;
+    left: 34vw;
+    transform: rotate(270deg);
+    transform-origin: left;
+  }
+
+  &#content-text-3 {
+    position: absolute;
+    left: 50vw;
+    transform: rotate(270deg);
+    transform-origin: left;
+  }
+
+  &#content-text-4 {
+    position: absolute;
+    left: 64vw;
+    transform: rotate(270deg);
+    transform-origin: left;
+  }
+
+  &#content-text-5 {
+    position: absolute;
+    left: 85vw;
+    transform: rotate(270deg);
+    transform-origin: left;
   }
 
   img {
-    top: 50%;
+    margin-top: 30px;
     transform: translateY(-30%);
     display: inline;
     width: 3vw;
