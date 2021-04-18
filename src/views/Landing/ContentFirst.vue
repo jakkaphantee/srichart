@@ -1,10 +1,16 @@
 <template>
   <div class="content-first-page">
-    <div class="box-gradient">
+    <!-- <div class="box-gradient">
       <div id="box-upper" />
       <div id="box-lower" />
-    </div>
+    </div> -->
     <div class="content-first-container">
+      <video
+        class="content-first-background-video"
+        :src="require('@/assets/images/content-first/content_first_background_video.mp4')"
+        autoplay
+        muted
+      />
       <div class="content-first-text" align="right">
         <h1>
           การกำเนิด
@@ -60,9 +66,13 @@ export default {
 
 .content-first-page {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
-  background-image: url('../../assets/images/content-first/content_born_background.png');
+  background-color: black;
+  // background-image: url('../../assets/images/content-first/content_born_background.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -73,18 +83,19 @@ export default {
 .content-first-background-video {
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   height: 100%;
   width: 100%;
   z-index: 1;
 }
 
 .content-first-container {
-  position: absolute;
-  top: 0;
+  position: relative;
   width: 100%;
   height: 100%;
   max-width: 1920px;
+  max-height: 1080px;
 }
 
 .content-first-text {
