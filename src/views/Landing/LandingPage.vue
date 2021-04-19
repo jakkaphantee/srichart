@@ -6,6 +6,7 @@
     <ContentSwitchRole id="content-switch-role-page" />
     <ContentBrief id="content-brief-page" />
     <QuizIntro id="quiz-intro-page" />
+    <ProductList id="product-list-page" />
     <ContactFooter id="contact-footer" />
   </div>
 </template>
@@ -19,6 +20,7 @@ import ContentFirst from './ContentFirst'
 import ContentSwitchRole from './ContentSwitchRole'
 import ContentBrief from './ContentBrief'
 import QuizIntro from '../Quiz/QuizIntro'
+import ProductList from './ProductList'
 import ContactFooter from './ContactFooter'
 
 export default {
@@ -29,6 +31,7 @@ export default {
     ContentSwitchRole,
     ContentBrief,
     QuizIntro,
+    ProductList,
     ContactFooter
     // Home: () => import('./Home'),
     // ContentIntro: () => import('./ContentIntro'),
