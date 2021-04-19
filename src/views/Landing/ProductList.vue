@@ -105,8 +105,8 @@ export default {
 }
 .product-description {
   position: absolute;
-  bottom: 5vh;
-  right: 10vw;
+  bottom: 5%;
+  right: 10%;
   color: white;
 }
 </style>
