@@ -75,17 +75,21 @@ export default {
   position: relative;
   width: 100vw;
   height: 100vh;
-  max-width: 1920px;
-  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/images/product-list/product_list_background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .product-page-title {
   position: absolute;
   top: 1%;
   left: 4%;
-  color: grey;
+  color: transparent;
   font-weight: 600;
+  -webkit-text-stroke: 2px white;
   z-index: 4;
-  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
 }
 .product-list-container {
   position: absolute;
