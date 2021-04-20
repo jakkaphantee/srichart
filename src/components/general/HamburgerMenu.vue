@@ -1,7 +1,14 @@
 <template>
   <div>
     <div class="hamburger-icon" @click="openMenu()">
-      <img src="../../assets/images/icons/hamburger.svg" />
+      <img
+        v-if="currentPage !== 'product'"
+        :src="require('@/assets/images/icons/hamburger.svg')"
+      />
+      <img
+        v-else
+        :src="require('@/assets/images/icons/hamburger_white.svg')"
+      />
     </div>
     <div
       class="hamburger-overlay-menu"
@@ -44,7 +51,8 @@ export default {
   },
   computed: {
     ...mapState('preference', {
-      menuList: state => state.menuList
+      menuList: state => state.menuList,
+      currentPage: state => state.currentPage
     })
   },
   methods: {

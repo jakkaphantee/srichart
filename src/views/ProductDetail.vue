@@ -229,7 +229,7 @@ export default {
 .product-detail-page {
   position: relative;
   width: 100vw;
-  background-color: red;
+  background-color: black;
 }
 .product-detail-container {
   position: relative;
