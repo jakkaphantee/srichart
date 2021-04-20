@@ -10,15 +10,16 @@ const state = () => ({
     },
     {
       label: 'คลังสินค้า',
-      to: ''
+      to: 'product-list'
     },
     {
       label: 'ผู้จัดทำ',
-      to: ''
+      to: 'contact-footer'
     }
   ],
   currentPage: 'intro',
-  currentHomeComponent: ''
+  currentHomeComponent: '',
+  currentProductView: ''
 })
 
 const mutations = {
@@ -27,6 +28,9 @@ const mutations = {
   },
   changeUserHomeComponent: (state, componentId) => {
     state.currentHomeComponent = componentId
+  },
+  changeCurrentProductView: (state, productName) => {
+    state.currentProductView = productName
   }
 }
 

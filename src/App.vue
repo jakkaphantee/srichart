@@ -4,6 +4,7 @@
     <Intro v-if="currentPage === 'intro'" />
     <LandingPage v-if="currentPage === 'home'" />
     <QuizMain v-else-if="currentPage === 'quiz'" />
+    <ProductDetail v-else-if="currentPage === 'product'" />
   </div>
 </template>
 
@@ -16,7 +17,8 @@ export default {
     HamburgerMenu: HamburgerMenu,
     Intro: () => import('./views/Intro'),
     LandingPage: () => import('./views/Landing/LandingPage'),
-    QuizMain: () => import('./views/Quiz/QuizMain')
+    QuizMain: () => import('./views/Quiz/QuizMain'),
+    ProductDetail: () => import('./views/ProductDetail')
   },
   computed: {
     ...mapState('preference', {

@@ -6,7 +6,7 @@
     <ContentSwitchRole id="content-switch-role-page" />
     <ContentBrief id="content-brief-page" />
     <QuizIntro id="quiz-intro-page" />
-    <ProductList id="product-list-page" />
+    <ProductList id="product-list" />
     <ContactFooter id="contact-footer" />
   </div>
 </template>

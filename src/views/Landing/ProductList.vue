@@ -9,6 +9,7 @@
         :key="product.productName"
         :class="index === 1 ? 'mx-5' : ''"
         :src="require(`@/assets/images/product-list/${product.imageName}.png`)"
+        @click="changeUserPage('product'); changeCurrentProductView(product.productName);"
       />
     </div>
     <div class="product-description" align="right">
@@ -25,6 +26,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'ProductList',
   data() {
@@ -48,6 +51,12 @@ export default {
         'เหมาะสำหรับพ่อศรีบ้านพ่อศรีเรือน'
       ]
     }
+  },
+  methods: {
+    ...mapMutations('preference', {
+      changeUserPage: 'changeUserPage',
+      changeCurrentProductView: 'changeCurrentProductView'
+    })
   }
 }
 </script>
