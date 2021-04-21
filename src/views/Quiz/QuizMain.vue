@@ -50,14 +50,19 @@
         </div>
       </div>
     </div>
+    <QuizResult :isModalOpen="isResultModalOpen" />
   </div>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
+import QuizResult from '@/components/Quiz/QuizResult.vue'
 
 export default {
   name: 'QuizMain',
+  components: {
+    QuizResult
+  },
   data() {
     return {
       questionList: [
@@ -159,7 +164,8 @@ export default {
       ],
       questionCount: 0,
       isShowQuestion: true,
-      answerPoint: 0
+      answerPoint: 0,
+      isResultModalOpen: false
     }
   },
   computed: {
@@ -167,32 +173,29 @@ export default {
       return this.questionList[this.questionCount]
     }
   },
+  mounted() {
+    this.updateUserPoint(0)
+  },
   methods: {
     ...mapMutations('user', {
       updateUserPoint: 'updateUserPoint'
     }),
     submitAnswer(point) {
-      this.isShowQuestion = !this.isShowQuestion
-      this.answerPoint += point
-      this.$refs.questionImage.addEventListener('transitionend', this.afterQuestionDisappear)
+      if (this.questionCount < 4) {
+        this.isShowQuestion = !this.isShowQuestion
+        this.answerPoint += point
+        this.$refs.questionImage.addEventListener('transitionend', this.afterQuestionDisappear)
+      } else {
+        this.updateUserPoint(this.answerPoint)
+        this.isResultModalOpen = true
+      }
     },
     afterQuestionDisappear() {
       this.$refs.questionImage.removeEventListener('transitionend', this.afterQuestionDisappear)
-      if (this.questionCount < 4) {
-        this.questionCount += 1
-        setTimeout(() => {
-          this.isShowQuestion = true
-        }, 500)
-      } else {
-        this.updateUserPoint(this.answerPoint)
-        if (this.answerPoint <= 7) {
-          alert('ท่านเป็นคนที่มิยังไม่เข้าใจถึงจิตใจของสตรีดีพอ')
-        } else if (this.answerPoint >= 8 && this.answerPoint <= 12) {
-          alert('ท่านเป็นคนที่มิมีความอดทนเท่าใดนัก')
-        } else {
-          alert('ท่านเป็นคนที่ชอบใช้ความรุนแรงกับเพศหญิง')
-        }
-      }
+      this.questionCount += 1
+      setTimeout(() => {
+        this.isShowQuestion = true
+      }, 500)
     }
   }
 }

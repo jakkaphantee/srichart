@@ -10,6 +10,7 @@
         :src="require('@/assets/images/content-first/content_first_background_video.mp4')"
         autoplay
         muted
+        loop
       />
       <div class="content-first-text" align="right">
         <h1>

@@ -54,7 +54,6 @@ export default {
     currentHomeComponent(newValue) {
       if (newValue !== '') {
         this.scrollToPage(newValue)
-        this.changeUserHomeComponent('')
       }
     }
   },
@@ -73,6 +72,7 @@ export default {
     }),
     scrollToPage(elementId) {
       document.getElementById(elementId).scrollIntoView({ behavior: 'smooth' })
+      this.changeUserHomeComponent('')
     },
     landingPageScrollListener() {
       //
