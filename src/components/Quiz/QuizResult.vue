@@ -21,7 +21,7 @@
           </p>
           <button
             class="text-button quiz-product-button"
-            @click="changeUserPage('product'); changeCurrentProductView()"
+            @click="changeUserPage('product'); changeCurrentProductView(resultProduct)"
           >
             สินค้าที่จะช่วยท่าน
           </button>
