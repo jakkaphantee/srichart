@@ -1,5 +1,5 @@
 <template>
-  <div class="product-detail-page">
+  <div class="product-detail-page" :style="productPageStyle">
     <div class="product-detail-container">
       <img
         class="product-brand-logo"
@@ -10,7 +10,7 @@
         :src="require(`@/assets/images/product-detail/background_${currentProduct.imageName}.png`)"
       />
       <div class="product-content-container">
-        <div class="product-first-content">
+        <div ref="productContent" class="product-first-content">
           <img
             class="product-main-image"
             :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_main.png`)"
@@ -130,7 +130,8 @@ export default {
       },
       productCarouselCount: 0,
       productCarouselImage: null,
-      isModalOpen: false
+      isModalOpen: false,
+      productPageHeight: 0
     }
   },
   computed: {
@@ -156,11 +157,18 @@ export default {
       } else {
         return this.productCarouselCount === 3 ? 'current-carousel' : ''
       }
+    },
+    productPageStyle() {
+      return `height: ${this.productPageHeight}px`
     }
   },
   mounted() {
     window.scrollTo(0,0)
     this.changeCarouselImage()
+    this.$nextTick(() => {
+      this.setProductPageHeight()
+    })
+    window.onresize = this.setProductPageHeight
   },
   methods: {
     changeCarouselImage() {
@@ -172,6 +180,9 @@ export default {
       setTimeout(() => {
         this.changeCarouselImage()
       }, 4000)
+    },
+    setProductPageHeight() {
+      this.productPageHeight = this.$refs.productContent.clientHeight * 4
     }
   }
 }
