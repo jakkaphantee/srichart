@@ -118,7 +118,6 @@ export default {
       changeUserPage: 'changeUserPage'
     }),
     changeImageType(actionType) {
-      this.isUserPerformAnyAction = true
       switch (actionType) {
         case 'hand': {
           this.isHandCursor = true
@@ -131,6 +130,7 @@ export default {
           break
         }
         default: {
+          this.isUserPerformAnyAction = true
           clearTimeout(this.actionTimeout)
           this.isWomanWake = true
           this.actionTimeout = setTimeout(() => {
@@ -146,6 +146,7 @@ export default {
     onSpecialCursorClick($event) {
       const id = $event.target.id
       if (id === 'woman-sleep' && this.isSpecialCursorOn) {
+        this.isUserPerformAnyAction = true
         this.isHandCursor = false
         this.isFeetCursor = false
         const audio = new Audio(require('@/assets/sound/intro_woman_sound.mp3'))

@@ -55,12 +55,13 @@ export default {
         clearInterval(this.timer)
         this.$emit('introEnd')
         this.counter = 60
-        this.timer = setInterval(this.introTimerCallback, 1000)
+        this.timer = setInterval(this.timerCallback, 1000)
       }
     },
     timerCallback() {
       this.counter -= 1
       if (this.counter <= 30 && this.isUserPerformAnyAction) {
+        console.log('in')
         this.stopTimeInterval()
       } else if (this.counter === 0) {
         this.stopTimeInterval()
