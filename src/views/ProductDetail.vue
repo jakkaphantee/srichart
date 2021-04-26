@@ -11,6 +11,23 @@
       />
       <div class="product-content-container">
         <div ref="productContent" class="product-first-content">
+          <div class="product-title" :class="`${currentProductView}-style`">
+            <div class="first-row">
+              <div :class="isProductTitleShow ? 'show-content' : ''">
+                {{ currentProduct.productName1 }}
+              </div>
+            </div>
+            <div class="second-row">
+              <div :class="isProductTitleShow ? 'show-content' : ''">
+                {{ currentProduct.productName2 }}
+              </div>
+            </div>
+            <div class="third-row">
+              <div :class="isProductTitleShow ? 'show-content' : ''">
+                {{ currentProduct.productName3 }}
+              </div>
+            </div>
+          </div>
           <div class="product-main-image">
             <img
               :class="isProductMainImageShow ? 'show-content' : ''"
@@ -145,6 +162,9 @@ export default {
     return {
       productDetail: {
         brush: {
+          productName1: 'แปรง',
+          productName2: 'คง',
+          productName3: 'กระพัน',
           imageName: 'brush',
           productDescription1: 'แปรงขัดที่แสดงถึงความอดทนของลูกผู้หญิงที่ต้องทั้งทำงานทำการนอกบ้านกระนั้นก็ต้องรับผิดชอบงานในครัวเรือนไม่ให้ขาดตกบกพร่องอันเกิดมาจากกรอบสังคมที่ตีค่าว่าหญิงไทยที่ดีคือ หญิงที่เก่งการบ้านการเรือนจึงนำเสนอผ่าน แปรงที่หนักเพื่อให้เข้าใจถึงความ อดทนของผู้หญิง',
           productDescription2: 'แปรงนี้มีแนวคิดมาจากตัว นางวันทอง ในวรรณคดีเรื่อง‘ขุนช้างขุนแผน’โดย นางวันทองเป็นตัวละครสะท้อนให้เห็นถึงกรอบของสังคมว่าเป็นสตรีที่ดีต้องความสามารถในด้านการบ้านการเรือน เย็บปักถักร้อย ต้องมีสเน่ห์ปลายจวัก เรียบร้อยหัวอ่อนเชื่อฟังคำสั่งฝ่ายชาย เมื่อตอนเด็กเชื่อฟังพ่อ  พอแต่งงานให้ เชื่อฟังปรนนิบัติสามีโดยจากในวรรณ-คดีนั้นนางวันทองต้องจำยอมแต่งงานกับขุนช้างตามคำสtั่งของมารดาเพื่อ แสดงความกตัญญูแม้ใจจะไม่อยาก แต่งเพราะมีขุนแผนเป็นคนรักอยู่แล้ว แต่เมื่อแต่งไปก็ปฏิบัติหน้าที่ภรรยาได้ อย่างไม่ขาดตกบกพร่อง ',
@@ -154,6 +174,9 @@ export default {
           productBuyText: 'เพียงท่านตระหนักรู้ถึงความอดทนของคนรักของท่านแปรงที่เรือนของท่านก็เปรียบเหมือนแปรงคงกระพันแล'
         },
         handkerchief: {
+          productName1: '',
+          productName2: 'ผ้า',
+          productName3: 'รัตนะ',
           imageName: 'handkerchief',
           productDescription1: 'ถุงมือทำความสะอาดที่จะสร้างให้เกิดความเข้า ใจระหว่างคนรัก เพราะการอยู่ร่วมกันต้อง เคารพซึ่งกันและกันทั้งด้านความคิดรสนิยม ส่วนตัว และการตัดสินใจร่วมกัน รวมถึงด้าน ความยินยอมที่จะทำสิ่งต่างๆด้วยกันจึงนำเสนอผ่านถุงมือที่ติดกัน หากไม่ยอมรับความเห็นกัน และกันก็จะไม่สามารถทำงานให้ดำเนินต่อไปได้',
           productDescription2: 'ถุงมือ มีแนวคิดมาจาก นางมัทนา ในวรรณคดีเรื่องมัทนะพาธา โดย นางมัทนาเป็นตัวละครสะท้อนให้ การใช้อำนาจของเพศชายในสังคม ชายเป็นใหญ่ซึ่งจะให้อำนาจและ คุณค่ากับเพศชายมากกว่าเพศ หญิง โดยเพศหญิงจะถูกปกครอง และไม่ได้ความเคารพจากฝ่ายชาย ผู้หญิงจะไม่มีสิทธิมีเสียงในการเสนอความคิดในการตัดสินใจเรื่องต่างๆ ถูกลิดรอนเสรีภาพ และ ไม่สามารถ ที่จะปฏิเสธหรือเลือกที่จะไม่ยินยอม ฝ่ายชายได้เลย',
@@ -163,6 +186,9 @@ export default {
           productBuyText: 'เพียงท่านตระหนักรู้ถึงการเคารพความคิดคนรักของท่านจิตใจของท่านก็เชื่อมกันมิต่างจากถุงมือผูกจิต'
         },
         glove: {
+          productName1: 'ถุงมือ',
+          productName2: 'ผูก',
+          productName3: 'จิต',
           imageName: 'glove',
           productDescription1: 'ผ้าอเนกประสงค์ที่แสดงถึงความบอบบาง ของเพศหญิง เนื่องจากเพศหญิงมีข้อด้อย ทางด้านร่างกายที่อ่อนแอกว่าเพศชาย การ ที่เพศชายใช้กำลังทำร้าย ทุบตีเพศหญิงถือ เป็นเรื่องที่ผิด โดยจะนำเสนอผ่านผ้าที่เป็น แก้วหากใช้แรงมากเกินไปจะแตกร้าว',
           productDescription2: 'ผ้า นี้มีที่มาแนวคิดมาจาก นางกากี ในวรรณคดีเรื่องกากาติชาดก โดย นางกากีเป็นตัวละครสะท้อนให้เห็นสถานะของเพศหญิงในสังคมชาย เป็นใหญ่ที่จะถูกมองเป็นเพียงวัตถุสิ่งของ จะยกให่ใคร จะทำอะไร หรือ จะโยนทิ้ง อย่างไรก็ได้ โดยการ ทำร้ายร่างกาย ดุด่า ทุบตี ดักฉุด ข่มขืน ในสังคมชายเป็นใหญ่ฝ่าย ชายไม่ผิดแต่เพศหญิงต่างหากที่ เป็นฝ่ายผิด เพราะ สวยเกินไปและ เมื่อตัวของหญิงคนนั้นมีมลทินแล้ว สังคมก็จะประณามว่าเป็นหญิงชั่ว หญิงเลว เพราะ ไม่ตรงตามอุดมคติ ที่สังคมคาดหวังว่า เพศหญิงควรจะ ครองความบริสุทธิ์ของตนไว้และ มีสามีเพียงคนเดียว',
@@ -176,6 +202,7 @@ export default {
       productCarouselImage: null,
       isModalOpen: false,
       productPageHeight: 0,
+      isProductTitleShow: false,
       isProductMainImageShow: false,
       isProductMiddleShow: false,
       isProductDescription1Show: false,
@@ -220,6 +247,7 @@ export default {
     this.$nextTick(() => {
       this.setProductPageHeight()
       this.isProductMainImageShow = true
+      this.isProductTitleShow = true
     })
     window.onresize = this.setProductPageHeight
     document.addEventListener('scroll', this.scrollListener)
@@ -302,6 +330,36 @@ export default {
       font-size: 6.5vw;
     }
   }
+  .glove-style {
+    .first-row {
+      font-size: 10vw;
+    }
+    .second-row {
+      font-size: 9vw;
+    }
+    .third-row {
+      font-size: 12vw;
+    }
+  }
+  .brush-style {
+    .first-row {
+      font-size: 9.5vw;
+    }
+    .second-row {
+      font-size: 14vw;
+    }
+    .third-row {
+      font-size: 10vw;
+    }
+  }
+  .handkerchief-style {
+    .second-row {
+      font-size: 10vw;
+    }
+    .third-row {
+      font-size: 14vw;
+    }
+  }
 }
 @media (min-width: 1920px) {
   .product-brand-logo {
@@ -327,6 +385,153 @@ export default {
     }
     .product-buy-text {
       font-size: 144px;
+    }
+  }
+  .glove-style {
+    .first-row {
+      font-size: 200px;
+    }
+    .second-row {
+      font-size: 150px;
+    }
+    .third-row {
+      font-size: 288px;
+    }
+  }
+  .brush-style {
+    .first-row {
+      font-size: 180px;
+    }
+    .second-row {
+      font-size: 288px;
+    }
+    .third-row {
+      font-size: 200px;
+    }
+  }
+  .handkerchief-style {
+    .second-row {
+      font-size: 200px;
+    }
+    .third-row {
+      font-size: 288px;
+    }
+  }
+}
+.product-title {
+  position: absolute;
+  top: 20%;
+  right: 7%;
+  width: 50%;
+  height: 80%;
+  color: white;
+  font-family: '9_our_king';
+  div {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+  }
+  &.glove-style {
+    div {
+      transition: top 1.2s ease-out;
+    }
+    .first-row {
+      top: 0;
+      height: 35%;
+      div {
+        position: absolute;
+        top: 100%;
+        left: 30%;
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+    .second-row {
+      top: 20%;
+      height: 30%;
+      div {
+        position: absolute;
+        top: 100%;
+        right: 10%;
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+    .third-row {
+      top: 30%;
+      height: 40%;
+      div {
+        position: absolute;
+        top: 100%;
+        right: 20%;
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+  }
+  &.brush-style {
+    div {
+      transition: top 1.2s ease-out;
+    }
+    .first-row {
+      top: 0;
+      height: 35%;
+      div {
+        position: absolute;
+        top: 100%;
+        left: 30%;
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+    .second-row {
+      top: 10%;
+      height: 40%;
+      div {
+        position: absolute;
+        top: 100%;
+        right: 10%;
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+    .third-row {
+      top: 40%;
+      height: 30%;
+      div {
+        position: absolute;
+        top: 100%;
+        right: 0%;
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+  }
+  &.handkerchief-style {
+    div {
+      transition: top 1.2s ease-out;
+    }
+    .second-row {
+      top: 12%;
+      height: 30%;
+      div {
+        position: absolute;
+        top: 100%;
+        right: 15%;
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+    .third-row {
+      top: 27%;
+      height: 40%;
+      div {
+        position: absolute;
+        top: 100%;
+        right: 5%;
+        width: fit-content;
+        height: fit-content;
+      }
     }
   }
 }
