@@ -1,13 +1,21 @@
 <template>
-  <div class="intro-page" align="left">
+  <div
+    class="intro-page"
+    :class="[
+      isHandCursor ? 'show-hand-cursor' : '',
+      isFeetCursor ? 'show-feet-cursor' : ''
+    ]"
+    align="left"
+  >
     <div class="content-left">
       <img
+        id="woman-sleep"
         :src="require('@/assets/images/intro/woman_sleep.png')"
-        :class="actionType === '' ? 'is-primary' : 'is-secondary'"
+        :class="!isWomanWake ? 'is-primary' : 'is-secondary'"
       />
       <img
         :src="require('@/assets/images/intro/woman_awake.png')"
-        :class="actionType !== '' ? 'is-primary' : 'is-secondary'"
+        :class="isWomanWake ? 'is-primary' : 'is-secondary'"
       />
     </div>
     <div class="content-right">
@@ -67,8 +75,24 @@ export default {
       introFooterText: 'จริงฤา??',
       isUserPerformAnyAction: false,
       isIntoWebsiteModalOpen: false,
-      actionType: '',
-      actionTimeout: null
+      actionTimeout: null,
+      isHandCursor: false,
+      isFeetCursor: false,
+      isWomanWake: false
+    }
+  },
+  computed: {
+    isSpecialCursorOn() {
+      return this.isHandCursor || this.isFeetCursor
+    }
+  },
+  watch: {
+    isSpecialCursorOn(newValue) {
+      if (newValue) {
+        document.addEventListener('mousedown', this.onSpecialCursorClick)
+      } else {
+        document.removeEventListener('mousedown', this.onSpecialCursorClick)
+      }
     }
   },
   methods: {
@@ -77,14 +101,45 @@ export default {
     }),
     changeImageType(actionType) {
       this.isUserPerformAnyAction = true
-      this.actionType = actionType
-      clearTimeout(this.actionTimeout)
-      this.actionTimeout = setTimeout(() => {
-        this.actionType = ''
-      }, 1200)
+      switch (actionType) {
+        case 'hand': {
+          this.isHandCursor = true
+          this.isFeetCursor = false
+          break
+        }
+        case 'feet': {
+          this.isHandCursor = false
+          this.isFeetCursor = true
+          break
+        }
+        default: {
+          clearTimeout(this.actionTimeout)
+          this.isWomanWake = true
+          this.actionTimeout = setTimeout(() => {
+            this.isWomanWake = false
+          }, 1200)
+          break
+        }
+      }
     },
     showEnterSiteModal() {
       this.isIntoWebsiteModalOpen = true
+    },
+    onSpecialCursorClick($event) {
+      const id = $event.target.id
+      this.isHandCursor = false
+      this.isFeetCursor = false
+      if (id === 'woman-sleep') {
+        const audio = new Audio(require('@/assets/sound/intro_woman_sound.mp3'))
+        audio.play()
+        clearTimeout(this.actionTimeout)
+        setTimeout(() => {
+          this.isWomanWake = true
+          this.actionTimeout = setTimeout(() => {
+            this.isWomanWake = false
+          }, 1200)
+        }, 300)
+      }
     }
   }
 }
@@ -130,6 +185,12 @@ $themed-dark: #1d1717;
   background-position: center;
   width: 100vw;
   height: 100vh;
+  &.show-hand-cursor {
+    cursor: url('../assets/images/intro/hand_cursor.png'), auto;
+  }
+  &.show-feet-cursor {
+    cursor: url('../assets/images/intro/feet_cursor.png'), auto;
+  }
 }
 
 .content-left {
