@@ -51,6 +51,7 @@
       </div>
     </div>
     <QuizResult :isModalOpen="isResultModalOpen" />
+    <audio ref="quizAudio" :src="require('@/assets/sound/quiz_sound.mp3')" autoplay loop />
   </div>
 </template>
 
@@ -175,6 +176,7 @@ export default {
   },
   mounted() {
     this.updateUserPoint(0)
+    this.$refs.quizAudio.loop = true
   },
   methods: {
     ...mapMutations('user', {

@@ -8,11 +8,11 @@
     <QuizIntro id="quiz-intro-page" />
     <ProductList id="product-list" />
     <ContactFooter id="contact-footer" />
+    <audio ref="homeAudio" :src="require('@/assets/sound/home_shop_sound.wav')" autoplay loop />
   </div>
 </template>
 
 <script>
-// import scrollEventCheck from '@/helpers/scrollEventCheck.js'
 import { mapState, mapMutations } from 'vuex'
 import Home from './Home'
 import ContentIntro from './ContentIntro'
@@ -58,13 +58,13 @@ export default {
     }
   },
   mounted() {
+    this.$refs.homeAudio.loop = true
     this.scrollPoint = window.innerHeight * 40 / 100
     if (this.currentHomeComponent !== '') {
       this.$nextTick(() => {
         this.scrollToPage(this.currentHomeComponent)
       })
     }
-    // document.addEventListener('scroll', this.landingPageScrollListener)
   },
   methods: {
     ...mapMutations('preference', {
@@ -73,9 +73,6 @@ export default {
     scrollToPage(elementId) {
       document.getElementById(elementId).scrollIntoView({ behavior: 'smooth' })
       this.changeUserHomeComponent('')
-    },
-    landingPageScrollListener() {
-      //
     }
   }
 }
@@ -83,6 +80,11 @@ export default {
 
 <style lang="scss">
 .landing-page {
+  height: 100vh;
+  overflow: scroll;
   scroll-snap-type: y mandatory;
+  div {
+    scroll-snap-align: start;
+  }
 }
 </style>

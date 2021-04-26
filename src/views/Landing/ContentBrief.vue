@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted() {
-    document.addEventListener('scroll', this.scrollListener)
+    document.addEventListener('wheel', this.scrollListener)
   },
   methods: {
     scrollListener() {
@@ -44,7 +44,7 @@ export default {
     }
   },
   beforeDestroy() {
-    document.removeEventListener('scroll', this.scrollListener)
+    document.removeEventListener('wheel', this.scrollListener)
   }
 }
 </script>

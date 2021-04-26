@@ -1,5 +1,6 @@
 <template>
   <div class="product-detail-page" :style="productPageStyle">
+    <audio ref="productAudio" :src="require('@/assets/sound/home_shop_sound.wav')" autoplay loop />
     <div class="product-detail-container">
       <img
         class="product-brand-logo"
@@ -243,6 +244,7 @@ export default {
   },
   mounted() {
     window.scrollTo(0,0)
+    this.$refs.productAudio.loop = true
     this.changeCarouselImage()
     this.$nextTick(() => {
       this.setProductPageHeight()
@@ -648,7 +650,7 @@ export default {
     top: 30%;
     left: 38%;
     width: 16%;
-    height: 35%;
+    height: 40%;
     overflow: hidden;
     p {
       position: absolute;

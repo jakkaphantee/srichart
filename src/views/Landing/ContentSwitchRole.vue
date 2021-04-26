@@ -39,6 +39,13 @@
         />
       </div>
     </div>
+    <video
+      class="mouse-right-video"
+      :src="require('@/assets/images/content-switch-role/mouse_point_right.mp4')"
+      autoplay
+      muted
+      loop
+    />
   </div>
 </template>
 
@@ -203,5 +210,12 @@ $transition-duration: .2s;
       }
     }
   }
+}
+
+.mouse-right-video {
+  position: absolute;
+  top: 40%;
+  left: 5%;
+  width: 4%;
 }
 </style>

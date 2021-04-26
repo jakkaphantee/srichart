@@ -16,7 +16,7 @@
     >
       <img
         class="overlay-close-button"
-        src="../../assets/images/icons/cross.svg"
+        :src="require('@/assets/images/icons/cross.svg')"
         @click="closeMenu()"
       />
       <div class="overlay-menu-container">
@@ -111,6 +111,7 @@ export default {
     height: 50px;
     margin-top: 35px;
     margin-right: 35px;
+    z-index: 8;
 
     &:hover {
       cursor: pointer;

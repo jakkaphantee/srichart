@@ -69,6 +69,7 @@
         isUserPerformAnyAction
       }"
     />
+    <audio ref="introAudio" :src="require('@/assets/sound/intro_background_sound.mp3')" />
   </div>
 </template>
 
@@ -161,6 +162,8 @@ export default {
       }
     },
     onIntroEnd() {
+      this.$refs.introAudio.play()
+      this.$refs.introAudio.loop = true
       this.isIntroEnded = true
     }
   }
