@@ -7,7 +7,10 @@
     ]"
     align="left"
   >
-    <div class="content-left">
+    <div
+      class="content-left count-down-hide"
+      :class="isIntroEnded ? 'count-down-show' : ''"
+    >
       <img
         id="woman-sleep"
         :src="require('@/assets/images/intro/woman_sleep.png')"
@@ -21,16 +24,26 @@
     <div class="content-right">
       <div class="pl-5">
         <IntroTimeCounter
+          class="intro-time-position"
+          :class="isIntroEnded ? 'intro-end' : ''"
           v-bind="{
             isUserPerformAnyAction
           }"
           @timesUp="showEnterSiteModal()"
+          @introEnd="onIntroEnd"
         />
-        <div class="intro-head-text">
+        <div
+          class="intro-head-text"
+          :class="isIntroEnded ? 'intro-end' : ''"
+        >
           {{ introHeadText }}
         </div>
       </div>
-      <div class="mt-3" align="left">
+      <div
+        class="count-down-hide"
+        :class="isIntroEnded ? 'count-down-show' : ''"
+        align="left"
+      >
         <div class="intro-body-text">
           {{ introBodyText }}
           <div id="intro-footer">
@@ -45,7 +58,11 @@
         ข้าม
       </button>
     </div>
-    <ActionButton @changeImageType="changeImageType" />
+    <ActionButton
+      class="count-down-hide"
+      :class="isIntroEnded ? 'count-down-show' : ''"
+      @changeImageType="changeImageType"
+    />
     <IntoWebsiteModal
       v-bind="{
         isModalOpen: isIntoWebsiteModalOpen,
@@ -78,7 +95,8 @@ export default {
       actionTimeout: null,
       isHandCursor: false,
       isFeetCursor: false,
-      isWomanWake: false
+      isWomanWake: false,
+      isIntroEnded: false
     }
   },
   computed: {
@@ -127,9 +145,9 @@ export default {
     },
     onSpecialCursorClick($event) {
       const id = $event.target.id
-      this.isHandCursor = false
-      this.isFeetCursor = false
-      if (id === 'woman-sleep') {
+      if (id === 'woman-sleep' && this.isSpecialCursorOn) {
+        this.isHandCursor = false
+        this.isFeetCursor = false
         const audio = new Audio(require('@/assets/sound/intro_woman_sound.mp3'))
         audio.play()
         clearTimeout(this.actionTimeout)
@@ -140,6 +158,9 @@ export default {
           }, 1200)
         }, 300)
       }
+    },
+    onIntroEnd() {
+      this.isIntroEnded = true
     }
   }
 }
@@ -155,7 +176,6 @@ $themed-dark: #1d1717;
   }
   .intro-body-text {
     font-size: 1.5vw;
-    margin-left: 30%;
     
     #intro-footer {
       font-size: 3vw;
@@ -169,7 +189,6 @@ $themed-dark: #1d1717;
   }
   .intro-body-text {
     font-size: 32px;
-    margin-left: 300px;
 
     #intro-footer {
       font-size: 62px;
@@ -230,20 +249,26 @@ $themed-dark: #1d1717;
 
 .intro-head-text {
   position: absolute;
-  top: 11vh;
-  left: 13vw;
+  top: 50%;
+  left: -33%;
   color: white;
   font-weight: 600;
   white-space: pre-line;
   line-height: 8vh;
+  transition: all 1s ease-out;
+  &.intro-end {
+    top: 10%;
+    left: 28%;
+  }
 }
 
 .intro-body-text {
+  position: absolute;
+  top: 40%;
+  left: 35%;
   width: fit-content;
   white-space: pre-line;
   text-align-last: left;
-  margin-top: 10vh;
-  margin-left: 16vw;
   
   #intro-footer {
     font-weight: 600;
@@ -257,5 +282,24 @@ $themed-dark: #1d1717;
   right: 0;
   margin-right: 3%;
   margin-bottom: 3%;
+}
+
+.count-down-hide {
+  opacity: 0%;
+  transition: opacity 1s ease-out;
+  &.count-down-show {
+    opacity: 100%;
+  }
+}
+
+.intro-time-position {
+  position: absolute;
+  top: 30%;
+  left: -15%;
+  transition: all 1s ease-out;
+  &.intro-end {
+    top: 10%;
+    left: 5%;
+  }
 }
 </style>

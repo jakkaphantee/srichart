@@ -19,11 +19,11 @@ export default {
   data() {
     return {
       timer: null,
-      counter: 60
+      counter: 3
     }
   },
   mounted() {
-    // this.timer = setInterval(this.timerCallback, 1000)
+    this.timer = setInterval(this.introTimerCallback, 1000)
   },
   computed: {
     thaiNumberConverted() {
@@ -49,6 +49,15 @@ export default {
     }
   },
   methods: {
+    introTimerCallback() {
+      this.counter -= 1
+      if (this.counter === 0) {
+        clearInterval(this.timer)
+        this.$emit('introEnd')
+        this.counter = 60
+        this.timer = setInterval(this.introTimerCallback, 1000)
+      }
+    },
     timerCallback() {
       this.counter -= 1
       if (this.counter <= 30 && this.isUserPerformAnyAction) {
@@ -84,7 +93,6 @@ export default {
   position: relative;
   width: fit-content;
   height: fit-content;
-  margin-top: 11vh;
 
   .timer-icon {
     width: 10vw;
