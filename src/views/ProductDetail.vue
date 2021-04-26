@@ -11,19 +11,33 @@
       />
       <div class="product-content-container">
         <div ref="productContent" class="product-first-content">
-          <img
-            class="product-main-image"
-            :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_main.png`)"
-          />
-          <img
+          <div class="product-main-image">
+            <img
+              :class="isProductMainImageShow ? 'show-content' : ''"
+              :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_main.png`)"
+            />
+          </div>
+          <div
+            ref="productMiddleContainer"
             class="product-middle-image"
-            :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_middle.jpeg`)"
-          />
+          >
+            <img
+              :class="isProductMiddleShow ? 'show-content' : ''"
+              :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_middle.jpeg`)"
+            />
+          </div>
         </div>
         <div class="product-second-content">
-          <p>
-            {{ currentProduct.productDescription1 }}
-          </p>
+          <div
+            ref="productDescription1"
+            class="product-description-1"
+          >
+            <p
+              :class="isProductDescription1Show ? 'show-content' : ''"
+            >
+              {{ currentProduct.productDescription1 }}
+            </p>
+          </div>
           <video
             class="product-video"
             :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_video.mp4`)"
@@ -33,13 +47,23 @@
           />
         </div>
         <div class="product-third-content">
-          <img
+          <div
+            ref="productPerson"
             class="product-person"
-            :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_person.jpeg`)"
-          />
-          <p>
-            {{ currentProduct.productDescription2 }}
-          </p>
+          >
+            <img
+              :class="isProductPersonShow ? 'show-content' : ''"
+              :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_person.jpeg`)"
+            />
+          </div>
+          <div
+            ref="productDescription2"
+            class="product-description-2"
+          >
+            <p :class="isProductDescription2Show ? 'show-content' : ''">
+              {{ currentProduct.productDescription2 }}
+            </p>
+          </div>
           <div class="product-carousel">
             <img
               class="product-carousel-image"
@@ -59,18 +83,38 @@
           </div>
         </div>
         <div class="product-forth-content">
-          <div class="product-quote-text">
-            <p>
-              {{ currentProduct.productQuote1 }}<br />{{ currentProduct.productQuote2 }}
+          <div
+            ref="productQuoteText"
+            class="product-quote-text"
+          >
+            <div>
+              <p :class="isProductQuoteTextShow ? 'show-content' : ''">
+                {{ currentProduct.productQuote1 }}
+              </p>
+            </div>
+            <div>
+              <p :class="isProductQuoteTextShow ? 'show-content' : ''">
+                {{ currentProduct.productQuote2 }}
+              </p>
+            </div>
+          </div>
+          <div
+            ref="productQuoteDescription"
+            class="product-quote-description"
+          >
+            <p :class="isProductQuoteDesctiptionShow ? 'show-content' : ''">
+              {{ currentProduct.productQuoteDescription }}
             </p>
           </div>
-          <div class="product-quote-description">
-            {{ currentProduct.productQuoteDescription }}
-          </div>
-          <img
+          <div
+            ref="productQuotePerson"
             class="product-quote-person"
-            :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_quote.jpeg`)"
-          />
+          >
+            <img
+              :class="isProductQuotePersonShow ? 'show-content' : ''"
+              :src="require(`@/assets/images/product-detail/${currentProduct.imageName}_quote.jpeg`)"
+            />
+          </div>
           <div class="product-buy-text" @click="isModalOpen = true">
             ซื้อสินค้า
           </div>
@@ -131,7 +175,15 @@ export default {
       productCarouselCount: 0,
       productCarouselImage: null,
       isModalOpen: false,
-      productPageHeight: 0
+      productPageHeight: 0,
+      isProductMainImageShow: false,
+      isProductMiddleShow: false,
+      isProductDescription1Show: false,
+      isProductPersonShow: false,
+      isProductDescription2Show: false,
+      isProductQuoteDesctiptionShow: false,
+      isProductQuoteTextShow: false,
+      isProductQuotePersonShow: false
     }
   },
   computed: {
@@ -167,8 +219,10 @@ export default {
     this.changeCarouselImage()
     this.$nextTick(() => {
       this.setProductPageHeight()
+      this.isProductMainImageShow = true
     })
     window.onresize = this.setProductPageHeight
+    document.addEventListener('scroll', this.scrollListener)
   },
   methods: {
     changeCarouselImage() {
@@ -183,7 +237,40 @@ export default {
     },
     setProductPageHeight() {
       this.productPageHeight = this.$refs.productContent.clientHeight * 4
+    },
+    scrollListener() {
+      const productMiddleRect = this.$refs.productMiddleContainer.getBoundingClientRect()
+      if (productMiddleRect.top < 450) {
+        this.isProductMiddleShow = true
+      }
+      const productDescription1Rect = this.$refs.productDescription1.getBoundingClientRect()
+      if (productDescription1Rect.top < 630) {
+        this.isProductDescription1Show = true
+      }
+      const productPersonRect = this.$refs.productPerson.getBoundingClientRect()
+      if (productPersonRect.top <= 440) {
+        this.isProductPersonShow = true
+      }
+      const productDescription2Rect = this.$refs.productDescription2.getBoundingClientRect()
+      if (productDescription2Rect.top <= 600) {
+        this.isProductDescription2Show = true
+      }
+      const productQuoteDescriptionRect = this.$refs.productQuoteDescription.getBoundingClientRect()
+      if (productQuoteDescriptionRect.top <= 800) {
+        this.isProductQuoteDesctiptionShow = true
+      }
+      const productQuoteTextRect = this.$refs.productQuoteText.getBoundingClientRect()
+      if (productQuoteTextRect.top <= 700) {
+        this.isProductQuoteTextShow = true
+      }
+      const productQuotePersonRect = this.$refs.productQuotePerson.getBoundingClientRect()
+      if (productQuotePersonRect.top <= 640) {
+        this.isProductQuotePersonShow = true
+      }
     }
+  },
+  beforeDestroy() {
+    document.removeEventListener('scroll', this.scrollListener)
   }
 }
 </script>
@@ -282,18 +369,34 @@ export default {
   max-height: 1080px;
   .product-main-image {
     position: absolute;
-    height: 80%;
-    max-height: 900px;
     bottom: 0;
     left: 7%;
+    width: 40%;
+    height: 80%;
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      height: 100%;
+      transition: top 1.2s ease-out;
+    }
   }
   .product-middle-image {
     position: absolute;
     top: 70%;
     left: 50%;
     width: 20%;
-    max-width: 400px;
+    height: 45%;
     transform: translateX(-50%);
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      transition: top .8s ease-out;
+    }
   }
 }
 .product-second-content {
@@ -303,14 +406,21 @@ export default {
   height: 100vh;
   max-width: 1920px;
   max-height: 1080px;
-  p {
+  .product-description-1 {
     position: absolute;
     top: 12%;
     left: 5%;
-    width: fit-content;
-    max-width: 22%;
+    width: 22%;
+    height: 35%;
     text-align: left;
     color: white;
+    overflow: hidden;
+    p {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transition: top 1.2s ease-out;
+    }
   }
   .product-video {
     position: absolute;
@@ -327,20 +437,37 @@ export default {
   height: 100vh;
   max-width: 1920px;
   max-height: 1080px;
-  overflow-x: hidden;
-  p {
+  overflow: hidden;
+  .product-description-2 {
     position: absolute;
     top: 30%;
     left: 38%;
-    max-width: 16%;
-    color: white;
-    text-align: left;
+    width: 16%;
+    height: 35%;
+    overflow: hidden;
+    p {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      color: white;
+      text-align: left;
+      transition: top 1.2s ease-out;
+    }
   }
   .product-person {
     position: absolute;
     top: 12%;
     left: 5%;
     width: 28%;
+    height: 65%;
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      transition: top 1.2s ease-out;
+    }
   }
   .product-carousel {
     position: absolute;
@@ -383,27 +510,59 @@ export default {
   max-height: 1080px;
   .product-quote-text {
     position: absolute;
-    top: 5%;
+    top: 8%;
     right: 30%;
+    width: 35%;
+    height: 30%;
     color: transparent;
     -webkit-text-stroke: 2px white;
     font-weight: 600;
     font-style: italic;
     z-index: 4;
+    div {
+      position: relative;
+      width: 100%;
+      height: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      p {
+        position: absolute;
+        top: 100%;
+        transition: top .8s ease-out;
+      }
+    }
   }
   .product-quote-description {
     position: absolute;
     top: 40%;
     left: 33%;
-    max-width: 17%;
+    width: 17%;
+    height: 25%;
     color: white;
     text-align: left;
+    overflow: hidden;
+    p {
+      position: absolute;
+      top: 102%;
+      transition: top 1s ease-out;
+    }
   }
   .product-quote-person {
     position: absolute;
     top: 12%;
     right: 18%;
     width: 20%;
+    height: 55%;
+    overflow: hidden;
+    img {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      transition: top 1.2s ease-out;
+    }
   }
   .product-buy-text {
     position: absolute;
@@ -416,5 +575,8 @@ export default {
       cursor: pointer;
     }
   }
+}
+.show-content {
+  top: 0 !important;
 }
 </style>
