@@ -289,10 +289,10 @@ $themed-dark: #1d1717;
 }
 
 .count-down-hide {
-  opacity: 0%;
+  opacity: 0;
   transition: opacity 1s ease-out;
   &.count-down-show {
-    opacity: 100%;
+    opacity: 1;
   }
 }
 
