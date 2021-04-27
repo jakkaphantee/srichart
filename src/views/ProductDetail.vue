@@ -570,10 +570,11 @@ export default {
   position: relative;
   top: 0;
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  max-width: 1920px;
-  max-height: 1080px;
+  padding-top: 56.25%;
+  // width: 100vw;
+  // height: 100vh;
+  // max-width: 1920px;
+  // max-height: 1080px;
   .product-main-image {
     position: absolute;
     bottom: 0;
@@ -609,10 +610,11 @@ export default {
 .product-second-content {
   position: relative;
   top: 0;
-  width: 100vw;
-  height: 100vh;
-  max-width: 1920px;
-  max-height: 1080px;
+  padding-top: 56.25%;
+  // width: 100vw;
+  // height: 100vh;
+  // max-width: 1920px;
+  // max-height: 1080px;
   .product-description-1 {
     position: absolute;
     top: 12%;
@@ -640,17 +642,18 @@ export default {
 .product-third-content {
   position: relative;
   top: 0;
-  width: 100vw;
-  height: 100vh;
-  max-width: 1920px;
-  max-height: 1080px;
+  padding-top: 56.25%;
+  // width: 100vw;
+  // height: 100vh;
+  // max-width: 1920px;
+  // max-height: 1080px;
   overflow: hidden;
   .product-description-2 {
     position: absolute;
     top: 30%;
     left: 38%;
     width: 16%;
-    height: 40%;
+    height: 45%;
     overflow: hidden;
     p {
       position: absolute;
@@ -711,10 +714,11 @@ export default {
 .product-forth-content {
   position: relative;
   top: 0;
-  width: 100vw;
-  height: 100vh;
-  max-width: 1920px;
-  max-height: 1080px;
+  padding-top: 56.25%;
+  // width: 100vw;
+  // height: 100vh;
+  // max-width: 1920px;
+  // max-height: 1080px;
   .product-quote-text {
     position: absolute;
     top: 8%;
