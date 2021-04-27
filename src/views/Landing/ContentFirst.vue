@@ -49,7 +49,7 @@ export default {
       font-size: 5vw;
     }
     p {
-      font-size: 1.7vw;
+      font-size: 1.55vw;
     }
   }
 }

@@ -57,7 +57,7 @@ $swing-duration: 2.7s;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 7%;
+  width: 5%;
   max-width: 140px;
   margin-top: 15px;
   z-index: 10;

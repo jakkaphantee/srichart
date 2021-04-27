@@ -4,6 +4,14 @@
     <h1>
       {{ thaiNumberConverted }}
     </h1>
+    <div
+      v-if="!isIntroEnd"
+      class="start-button"
+      align="center"
+      @click="startTimer()"
+    >
+      <strong>กดเพื่อเริ่ม</strong>
+    </div>
   </div>
 </template>
 
@@ -19,11 +27,9 @@ export default {
   data() {
     return {
       timer: null,
-      counter: 3
+      counter: '',
+      isIntroEnd: false
     }
-  },
-  mounted() {
-    this.timer = setInterval(this.introTimerCallback, 1000)
   },
   computed: {
     thaiNumberConverted() {
@@ -49,14 +55,11 @@ export default {
     }
   },
   methods: {
-    introTimerCallback() {
-      this.counter -= 1
-      if (this.counter === 0) {
-        clearInterval(this.timer)
-        this.$emit('introEnd')
-        this.counter = 60
-        this.timer = setInterval(this.timerCallback, 1000)
-      }
+    startTimer() {
+      this.isIntroEnd = true
+      this.counter = 60
+      this.timer = setInterval(this.timerCallback, 1000)
+      this.$emit('introEnd')
     },
     timerCallback() {
       this.counter -= 1
@@ -83,17 +86,26 @@ export default {
   .timer-container h1 {
     font-size: 3vw;
   }
+  .start-button {
+    font-size: 3vw;
+  }
 }
 @media (min-width: 1920px) {
   .timer-container h1 {
     font-size: 62px;
-  } 
+  }
+  .start-button {
+    font-size: 62px;
+  }
 }
 
 .timer-container {
   position: relative;
   width: fit-content;
   height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .timer-icon {
     width: 10vw;
@@ -109,6 +121,18 @@ export default {
     font-family: '9_our_king';
     font-weight: 700;
     color: white;
+  }
+}
+
+.start-button {
+  position: absolute;
+  top: 120%;
+  width: 150%;
+  color: white;
+  white-space: pre;
+  border-bottom: 3px solid white;
+  &:hover {
+    cursor: pointer;
   }
 }
 </style>

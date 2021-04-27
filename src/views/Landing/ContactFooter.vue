@@ -60,7 +60,7 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 1920px) {
   .contact-form {
-    font-size: 1.5vw;
+    font-size: 1.3vw;
   }
   .producer-name {
     font-size: .9vw;
@@ -78,7 +78,7 @@ export default {
 
 @media (min-width: 1920px) {
   .contact-form {
-    font-size: 28px;
+    font-size: 26px;
   }
   .producer-name {
     font-size: 18px;
@@ -110,7 +110,7 @@ export default {
 .contact-brand-logo {
   position: absolute;
   top: 15%;
-  width: 4vw;
+  width: 3.5vw;
   max-width: 90px;
   max-height: 90px;
 }
@@ -135,6 +135,7 @@ export default {
 .contact-input {
   background-color: #C4C4C4;
   border-radius: 0;
+  height: 30px;
   &:focus {
     box-shadow: none;
     outline: none;

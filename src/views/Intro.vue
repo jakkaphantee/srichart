@@ -253,16 +253,16 @@ $themed-dark: #1d1717;
 
 .intro-head-text {
   position: absolute;
-  top: 50%;
-  left: -33%;
+  top: 10%;
+  left: 28%;
   color: white;
   font-weight: 600;
   white-space: pre-line;
   line-height: 8vh;
+  opacity: 0;
   transition: all 1s ease-out;
   &.intro-end {
-    top: 10%;
-    left: 28%;
+    opacity: 1;
   }
 }
 

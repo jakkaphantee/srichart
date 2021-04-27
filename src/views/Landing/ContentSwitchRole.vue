@@ -16,12 +16,26 @@
         >
           การสลับ
         </h2>
-        <p>
-          การสลับบทบาท นั้นคือการให้เหล่าชายฉกรรจ์
-          มารับบทบาทเป็นแม่บ้าน แม่เรือน เพื่อให้เข้าใจ
-          ถึงหัวอก หัวใจ ของสตรีไทยที่โดนกรอบสังคม
-          กดดันให้รับภาระหน้าที่่นี้
-        </p>
+        <div class="content-text-description">
+          <div>
+            การสลับบทบาท
+          </div>
+          <div>
+            นั้นคือการให้เหล่าชายฉกรรจ์
+          </div>
+          <div>
+            มารับบทบาทเป็นแม่บ้าน แม่เรือน
+          </div>
+          <div>
+            เพื่อให้เข้าใจ ถึงหัวอก หัวใจ
+          </div>
+          <div>
+            ของสตรีไทยที่โดนกรอบสังคม
+          </div>
+          <div>
+            กดดันให้รับภาระหน้าที่่นี้
+          </div>
+        </div>
       </div>
       <div class="content-right">
         <h1>
@@ -74,8 +88,8 @@ $transition-duration: .2s;
         font-size: 4.5vw;
       }
     }
-    p {
-      font-size: 1.4vw;
+    .content-text-description {
+      font-size: 1.2vw;
     }
   }
   
@@ -96,7 +110,7 @@ $transition-duration: .2s;
         font-size: 90px;
       }
     }
-    p {
+    .content-text-description {
       font-size: 24px;
     }
   }
@@ -164,12 +178,12 @@ $transition-duration: .2s;
       }
     }
 
-    p {
-      position: inherit;
+    .content-text-description {
+      position: absolute;
       top: 55%;
       left: 50%;
       transform: translateX(-50%);
-      max-width: 270px;
+      width: 100%;
       color: white;
     }
   }

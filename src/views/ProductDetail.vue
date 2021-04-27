@@ -313,7 +313,7 @@ export default {
   }
   .product-second-content {
     p {
-      font-size: 1.5vw;
+      font-size: 1.3vw;
     }
   }
   .product-third-content {
@@ -601,7 +601,7 @@ export default {
       position: absolute;
       top: 100%;
       left: 0;
-      width: 100%;
+      height: 100%;
       transition: top .8s ease-out;
     }
   }
