@@ -171,7 +171,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$themed-red: #8D0000;
+$themed-red: #221C1C;
 $themed-dark: #1d1717;
 
 @media (max-width: 1920px) {
@@ -253,7 +253,7 @@ $themed-dark: #1d1717;
 
 .intro-head-text {
   position: absolute;
-  top: 10%;
+  top: 11%;
   left: 28%;
   color: white;
   font-weight: 600;

@@ -460,7 +460,7 @@ export default {
       }
     }
     .third-row {
-      top: 30%;
+      top: 35%;
       height: 40%;
       div {
         position: absolute;
