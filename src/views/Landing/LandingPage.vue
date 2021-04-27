@@ -1,7 +1,11 @@
 <template>
-  <div class="landing-page">
+  <div ref="landingPage" class="landing-page" @scroll="pageScroll">
     <Home id="home-page" @scrollToPage="scrollToPage" />
-    <ContentIntro id="content-intro-page" />
+    <ContentIntro
+      id="content-intro-page"
+      :isScrollEnable="isContentIntroScrollEnable"
+      @stopScroll="isContentIntroScrollEnable = false"
+    />
     <ContentFirst id="content-first-page" />
     <ContentSwitchRole id="content-switch-role-page" />
     <ContentBrief id="content-brief-page" />
@@ -42,7 +46,9 @@ export default {
   },
   data() {
     return {
-      scrollPoint: 0
+      scrollPoint: 0,
+      contentIntroPage: null,
+      isContentIntroScrollEnable: true
     }
   },
   computed: {
@@ -65,6 +71,9 @@ export default {
         this.scrollToPage(this.currentHomeComponent)
       })
     }
+    window.onscroll = () => {
+      console.log('in')
+    }
   },
   methods: {
     ...mapMutations('preference', {
@@ -73,6 +82,15 @@ export default {
     scrollToPage(elementId) {
       document.getElementById(elementId).scrollIntoView({ behavior: 'smooth' })
       this.changeUserHomeComponent('')
+    },
+    initRect(rect) {
+      this.contentIntroPage = rect
+    },
+    pageScroll() {
+      const contentIntroPageRect = document.getElementById('content-intro-page').getBoundingClientRect()
+      if (contentIntroPageRect.top > -50 && contentIntroPageRect.top < 50) {
+        this.isContentIntroScrollEnable = true
+      }
     }
   }
 }
@@ -81,7 +99,7 @@ export default {
 <style lang="scss">
 .landing-page {
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
   scroll-snap-type: y mandatory;
   div {
     scroll-snap-align: start;

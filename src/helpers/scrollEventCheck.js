@@ -1,5 +1,6 @@
 const isInViewport = (element) => {
   const rect = element.getBoundingClientRect()
+  console.log(rect.top)
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&
