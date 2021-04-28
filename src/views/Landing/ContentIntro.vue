@@ -67,7 +67,6 @@ export default {
   },
   watch: {
     isScrollEnable(newValue) {
-      console.log(newValue)
       if (newValue) {
         this.$refs.contentTextContainer.addEventListener('wheel', this.scrollListener)
       }
@@ -80,7 +79,6 @@ export default {
     scrollListener() {
       const contentText3 = document.getElementById('content-text-3').getBoundingClientRect()
       this.calculatePosition(contentText3.top)
-      console.log(contentText3.top)
       if (contentText3.top < -1980) {
         this.$emit('stopScroll')
         this.$refs.contentTextContainer.scrollBy(0, -5)

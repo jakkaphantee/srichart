@@ -1,8 +1,29 @@
 <template>
-  <div class="base-component-page quiz-intro-page">
-    <div class="quiz-intro-text-bar text-bar-header-container">
-      <div>
-        บททดสอบแห่งโชคชะตา บททดสอบแห่งโชคชะตา บททดสอบแห่งโชคชะตา บททดสอบแห่งโชคชะตา บททดสอบแห่งโชคชะตา
+  <div class="base-component-page quiz-intro-page" align="center">
+    <div ref="textBarHeader" class="quiz-intro-text-bar text-bar-header-container" align="left">
+      <div
+        ref="textHeaderContainer"
+        class="text-header-container"
+        :style="isHeaderOnTransition ? textHeaderTransition : ''"
+      >
+        <div ref="textHeaderContent" class="text-header-content">
+          บททดสอบแห่งโชคชะตา
+        </div>
+        <div class="text-header-content">
+          บททดสอบแห่งโชคชะตา
+        </div>
+        <div class="text-header-content">
+          บททดสอบแห่งโชคชะตา
+        </div>
+        <div class="text-header-content">
+          บททดสอบแห่งโชคชะตา
+        </div>
+        <div class="text-header-content">
+          บททดสอบแห่งโชคชะตา
+        </div>
+        <div class="text-header-content">
+          บททดสอบแห่งโชคชะตา
+        </div>
       </div>
     </div>
     <div
@@ -37,8 +58,30 @@
       </button>
     </div>
     <div class="quiz-intro-text-bar text-bar-footer-container">
-      <div>
-        ที่จะแสดงให้เห็นห้วงลึกในจิตใจ ที่จะแสดงให้เห็นห้วงลึกในจิตใจ ที่จะแสดงให้เห็นห้วงลึกในจิตใจ ที่จะแสดงให้เห็นห้วงลึกในจิตใจ ที่จะแสดงให้เห็นห้วงลึกในจิตใจ
+      <div
+        ref="textFooterContainer"
+        class="text-footer-container"
+        :style="isFooterOnTransition ? textFooterTransition : ''"
+        align="right"
+      >
+        <div ref="textFooterContent" class="text-footer-content">
+          ที่จะแสดงให้เห็นห้วงลึกในจิตใจ
+        </div>
+        <div class="text-footer-content">
+          ที่จะแสดงให้เห็นห้วงลึกในจิตใจ
+        </div>
+        <div class="text-footer-content">
+          ที่จะแสดงให้เห็นห้วงลึกในจิตใจ
+        </div>
+        <div class="text-footer-content">
+          ที่จะแสดงให้เห็นห้วงลึกในจิตใจ
+        </div>
+        <div class="text-footer-content">
+          ที่จะแสดงให้เห็นห้วงลึกในจิตใจ
+        </div>
+        <div class="text-footer-content">
+          ที่จะแสดงให้เห็นห้วงลึกในจิตใจ
+        </div>
       </div>
     </div>
   </div>
@@ -51,12 +94,40 @@ export default {
   data() {
     return {
       isFirstButtonClicked: false,
-      currentQuizIntroStep: 1
+      currentQuizIntroStep: 1,
+      isHeaderOnTransition: true,
+      textHeaderContentWidth: 0,
+      isFooterOnTransition: true,
+      textFooterContentWidth: 0
+    }
+  },
+  computed: {
+    textHeaderTransition() {
+      const percent = this.textHeaderContentWidth * 100 / window.innerWidth
+      return `
+        transition: all 7s linear;
+        margin-left: -${percent}%;
+      `
+    },
+    textFooterTransition() {
+      const percent = this.textFooterContentWidth * 100 / window.innerWidth
+      return `
+        transition: all 7s linear;
+        margin-right: -${percent}%;
+      `
     }
   },
   mounted() {
     const firstButton = document.querySelector('.quiz-button.first-button')
     firstButton.addEventListener('transitionend', this.onFirstButtonTransitionEnd)
+    this.$refs.textHeaderContainer.addEventListener('transitionend', () => {
+      this.setHeaderAnimation()
+    })
+    this.$refs.textFooterContainer.addEventListener('transitionend', () => {
+      this.setFooterAnimation()
+    })
+    this.textHeaderContentWidth = this.$refs.textHeaderContent.offsetWidth
+    this.textFooterContentWidth = this.$refs.textFooterContent.offsetWidth
   },
   methods: {
     ...mapMutations('preference', {
@@ -64,6 +135,18 @@ export default {
     }),
     onFirstButtonTransitionEnd() {
       this.currentQuizIntroStep = 2
+    },
+    setHeaderAnimation() {
+      this.isHeaderOnTransition = false
+      this.$nextTick(() => {
+        this.isHeaderOnTransition = true
+      })
+    },
+    setFooterAnimation() {
+      this.isFooterOnTransition = false
+      this.$nextTick(() => {
+        this.isFooterOnTransition = true
+      })
     }
   }
 }
@@ -78,6 +161,11 @@ export default {
     height: 12vw;
     font-size: 8vw;
   }
+  .quiz-intro-content-container {
+    p {
+      font-size: 1.7vw;
+    }
+  }
 }
 
 @media (min-width: 1920px) {
@@ -87,6 +175,11 @@ export default {
   .quiz-intro-text-bar {
     height: 190px;
     font-size: 140px;
+  }
+  .quiz-intro-content-container {
+    p {
+      font-size: 27px;
+    }
   }
 }
 
@@ -99,8 +192,10 @@ export default {
 }
 
 .quiz-intro-content-container {
-  position: relative;
-  margin: auto;
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 1100px;
   height: fit-content;
   padding-bottom: 100px;
@@ -119,7 +214,6 @@ export default {
     p {
       margin-top: 50px;
       color: white;
-      font-size: 27px;
       transition: margin-top .8s ease-out;
     }
   }
@@ -131,13 +225,13 @@ export default {
 
   &.first-button {
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     transition: all .4s ease-in;
 
     &.hide-first-button {
-      top: 100%;
+      top: 120%;
     }
   }
 
@@ -157,51 +251,47 @@ export default {
 
 .quiz-intro-text-bar {
   position: absolute;
-  display: flex;
-  align-items: center;
   background-color: black;
   width: 100%;
-  overflow: hidden;
   color: black;
   font-family: '9_our_king';
   text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
-
-  div {
-    position: absolute;
-    margin: auto;
-    white-space: nowrap;
-  }
+  overflow: hidden;
 
   &.text-bar-header-container {
     top: 0;
-
+    left: 0;
+    width: 100%;
     div {
-      animation: text-bar-header-animate 5s infinite linear;
+      display: inline-block;
     }
-
-    @keyframes text-bar-header-animate {
-      from {
-        left: 0%;
-      }
-      to {
-        left: -73%;
+    .text-header-container {
+      position: absolute;
+      top: 0;
+      margin-left: 0;
+      .text-header-content {
+        position: relative;
+        width: fit-content;
+        display: inline;
+        white-space: nowrap;
       }
     }
   }
 
   &.text-bar-footer-container {
     bottom: 0;
-    
-    div {
-      animation: text-bar-footer-animate 5s infinite linear;
-    }
-
-    @keyframes text-bar-footer-animate {
-      from {
-        right: 0%;
-      }
-      to {
-        right: -93%;
+    right: 0;
+    width: 100%;
+    .text-footer-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-right: 0;
+      .text-footer-content {
+        position: relative;
+        width: fit-content;
+        display: inline;
+        white-space: nowrap;
       }
     }
   }
