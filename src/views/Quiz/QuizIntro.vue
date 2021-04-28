@@ -4,7 +4,7 @@
       <div
         ref="textHeaderContainer"
         class="text-header-container"
-        :style="isHeaderOnTransition ? textHeaderTransition : ''"
+        :style="textHeaderTransition"
       >
         <div ref="textHeaderContent" class="text-header-content">
           บททดสอบแห่งโชคชะตา
@@ -61,7 +61,7 @@
       <div
         ref="textFooterContainer"
         class="text-footer-container"
-        :style="isFooterOnTransition ? textFooterTransition : ''"
+        :style="textFooterTransition"
         align="right"
       >
         <div ref="textFooterContent" class="text-footer-content">
@@ -95,26 +95,35 @@ export default {
     return {
       isFirstButtonClicked: false,
       currentQuizIntroStep: 1,
-      isHeaderOnTransition: true,
+      isHeaderOnTransition: false,
       textHeaderContentWidth: 0,
-      isFooterOnTransition: true,
+      isFooterOnTransition: false,
       textFooterContentWidth: 0
     }
   },
   computed: {
     textHeaderTransition() {
       const percent = this.textHeaderContentWidth * 100 / window.innerWidth
-      return `
-        transition: all 7s linear;
-        margin-left: -${percent}%;
-      `
+      if (this.isHeaderOnTransition) {
+        return `
+          transition: all 7s linear;
+          margin-left: -${percent}%;
+        `
+      } else {
+        return ''
+      }
     },
     textFooterTransition() {
       const percent = this.textFooterContentWidth * 100 / window.innerWidth
-      return `
-        transition: all 7s linear;
-        margin-right: -${percent}%;
-      `
+      
+      if (this.isFooterOnTransition) {
+        return `
+          transition: all 7s linear;
+          margin-right: -${percent}%;
+        `
+      } else {
+        return ''
+      }
     }
   },
   mounted() {
@@ -125,6 +134,10 @@ export default {
     })
     this.$refs.textFooterContainer.addEventListener('transitionend', () => {
       this.setFooterAnimation()
+    })
+    this.$nextTick(() => {
+      this.isHeaderOnTransition = true
+      this.isFooterOnTransition = true
     })
     this.textHeaderContentWidth = this.$refs.textHeaderContent.offsetWidth
     this.textFooterContentWidth = this.$refs.textFooterContent.offsetWidth
