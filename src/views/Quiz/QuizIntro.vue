@@ -151,15 +151,15 @@ export default {
     },
     setHeaderAnimation() {
       this.isHeaderOnTransition = false
-      this.$nextTick(() => {
+      setTimeout(() => {
         this.isHeaderOnTransition = true
-      })
+      }, 10)
     },
     setFooterAnimation() {
       this.isFooterOnTransition = false
-      this.$nextTick(() => {
+      setTimeout(() => {
         this.isFooterOnTransition = true
-      })
+      }, 5)
     }
   }
 }
@@ -281,7 +281,7 @@ export default {
     .text-header-container {
       position: absolute;
       top: 0;
-      margin-left: 0;
+      margin: 0;
       .text-header-content {
         position: relative;
         width: fit-content;
@@ -299,7 +299,7 @@ export default {
       position: absolute;
       top: 0;
       right: 0;
-      margin-right: 0;
+      margin: 0;
       .text-footer-content {
         position: relative;
         width: fit-content;

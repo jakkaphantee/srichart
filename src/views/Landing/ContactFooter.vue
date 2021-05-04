@@ -21,7 +21,10 @@
         <b-input class="contact-input small-input" autocomplete="off" size="sm" />
       </div>
     </div>
-    <div class="producer-profile-container">
+    <div
+      class="producer-profile-container"
+      @click="isCreditModalOpen = true"
+    >
       <img :src="require('@/assets/images/contact-footer/producer.jpeg')" />
       <div class="producer-name mt-1">
         <strong>
@@ -42,16 +45,43 @@
       <div class="producer-email">
         chayanee.chanin@gmail.com
       </div>
+      <div class="credit-image-container">
+        <img
+          id="cosci-logo"
+          :src="require('@/assets/images/cosci_logo.png')"
+        />
+        <img
+          id="ramd-logo"
+          :src="require('@/assets/images/ramd_logo.png')"
+        />
+        <img
+          id="multi-logo"
+          :src="require('@/assets/images/multi_logo.png')"
+        />
+        <img
+          id="exhibition-logo"
+          :src="require('@/assets/images/exhibition_logo.png')"
+        />
+      </div>
     </div>
+    <CreditModal
+      :isModalOpen="isCreditModalOpen"
+      @closeModal="isCreditModalOpen = false"
+    />
   </div>
 </template>
 
 <script>
+import CreditModal from '@/components/general/CreditModal.vue'
+
 export default {
   name: 'ContactFooter',
+  components: {
+    CreditModal
+  },
   data() {
     return {
-      //
+      isCreditModalOpen: false
     }
   }
 }
@@ -149,19 +179,59 @@ export default {
   top: 30%;
   right: 7%;
   width: 11vw;
-  height: 280px;
+  height: 38%;
   max-width: 300px;
   img {
-    width: 100%;
+    height: 100%;
+  }
+  &:hover {
+    cursor: pointer;
   }
 }
 .producer-contact-data {
   position: absolute;
-  top: 38%;
+  top: 30%;
   left: 7%;
-  width: 18vw;
+  width: 15%;
+  height: 60%;
+  max-width: 275px;
   h3 {
     font-weight: 600;
+  }
+  .credit-image-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    #cosci-logo {
+      position: relative;
+      width: 50%;
+      max-width: 150px;
+      flex: .5;
+      margin-top: 10px;
+    }
+    #ramd-logo {
+      position: relative;
+      width: 25%;
+      max-width: 75px;
+      flex: .5;
+      margin-top: 10px;
+    }
+    #multi-logo {
+      position: relative;
+      width: 45%;
+      max-width: 135px;
+      flex: .5;
+      margin-top: 10px;
+    }
+    #exhibition-logo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      flex: 1;
+      height: 100%;
+      max-height: 180px;
+    }
   }
 }
 </style>

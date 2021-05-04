@@ -129,6 +129,10 @@ $font-color: #D11111;
   &.stop-scroll {
     overflow: hidden;
   }
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
 }
 
 .content-text {
